@@ -1,0 +1,27 @@
+<svg width="360" height="110" viewBox="0 0 360 110" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+  <title id="title">Uniqhaus Design and Build Logo</title>
+  <desc id="desc">Column mark with Uniqhaus wordmark and DESIGN AND BUILD subtitle.</desc>
+
+  <defs>
+    <style>
+      .ink { fill: #182430; }
+      .outline { fill: none; stroke: #182430; stroke-width: 3; }
+      .accent { fill: #af9362; }
+      .word { fill: #182430; font-family: 'Inter', Arial, sans-serif; font-size: 28px; font-weight: 500; letter-spacing: 0.1em; }
+      .sub { fill: #182430; font-family: 'Inter', Arial, sans-serif; font-size: 15px; font-weight: 500; letter-spacing: 0.45em; }
+      .rule { stroke: #b89b66; stroke-width: 2; opacity: 0.75; }
+    </style>
+  </defs>
+
+  <line x1="14" y1="92" x2="112" y2="92" class="outline" />
+  <rect x="22" y="54" width="12" height="38" class="outline" />
+  <rect x="38" y="42" width="12" height="50" class="outline" />
+  <rect x="54" y="28" width="12" height="64" class="outline" />
+  <rect x="70" y="34" width="12" height="58" class="outline" />
+  <rect x="86" y="48" width="12" height="44" class="accent" opacity="0.82" />
+  <line x1="22" y1="54" x2="98" y2="54" class="outline" opacity="0.85" />
+
+  <text x="132" y="56" class="word">UNIQHAUS</text>
+  <text x="132" y="86" class="sub">DESIGN &amp; BUILD</text>
+  <line x1="132" y1="61" x2="336" y2="61" class="rule" />
+</svg>

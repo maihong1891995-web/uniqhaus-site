@@ -1,0 +1,16 @@
+<svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Minimalist serif text logo with gold accent -->
+  <defs>
+    <style>
+      .logo-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 56px; font-weight: 400; letter-spacing: 0.15em; }
+      .logo-accent { fill: #c8a96e; }
+      .logo-dark { fill: #141414; }
+    </style>
+  </defs>
+  
+  <!-- Underline accent -->
+  <line x1="10" y1="70" x2="90" y2="70" stroke="#c8a96e" stroke-width="2"/>
+  
+  <!-- Text -->
+  <text x="10" y="58" class="logo-text logo-dark">CLAD</text>
+</svg>

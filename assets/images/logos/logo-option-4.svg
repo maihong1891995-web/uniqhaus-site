@@ -1,0 +1,22 @@
+<svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Modern square frame + text -->
+  <defs>
+    <style>
+      .logo-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 48px; font-weight: 400; letter-spacing: 0.15em; }
+      .logo-accent { fill: #c8a96e; }
+      .logo-dark { fill: #141414; }
+    </style>
+  </defs>
+  
+  <!-- Outer square frame -->
+  <rect x="10" y="12" width="36" height="56" fill="none" stroke="#141414" stroke-width="2"/>
+  
+  <!-- Inner gold square -->
+  <rect x="16" y="18" width="24" height="24" class="logo-accent"/>
+  
+  <!-- C letter inside -->
+  <text x="18" y="42" style="font-family: 'Cormorant Garamond', Georgia, serif; font-size: 28px; font-weight: 400; fill: #141414;">C</text>
+  
+  <!-- Text on right -->
+  <text x="55" y="52" class="logo-text logo-dark">CLAD</text>
+</svg>

@@ -1,0 +1,18 @@
+<svg viewBox="0 0 200 80" xmlns="http://www.w3.org/2000/svg">
+  <!-- Icon + Text: Architecture column concept -->
+  <defs>
+    <style>
+      .logo-text { font-family: 'Cormorant Garamond', Georgia, serif; font-size: 48px; font-weight: 400; letter-spacing: 0.12em; }
+      .logo-accent { fill: #c8a96e; }
+      .logo-dark { fill: #141414; }
+    </style>
+  </defs>
+  
+  <!-- Three vertical columns (architecture theme) -->
+  <rect x="12" y="15" width="4" height="45" class="logo-dark"/>
+  <rect x="20" y="10" width="4" height="50" class="logo-accent"/>
+  <rect x="28" y="18" width="4" height="42" class="logo-dark"/>
+  
+  <!-- Text -->
+  <text x="40" y="52" class="logo-text logo-dark">CLAD</text>
+</svg>
