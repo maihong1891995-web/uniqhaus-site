@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" /></noscript>
   <link rel="stylesheet" href="style.css" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NJXQKZ6K');</script>
   <script type="application/ld+json">
@@ -49,43 +49,40 @@
     </div>
   </nav>
 
-  <section class="svc-page-hero">
-    <div class="container">
+    <section class="svc-hero-split">
+    <div class="svc-hero-text">
       <p class="section-label">SERVICE</p>
       <h1>Custom Homes</h1>
-      <p class="tagline">Your home, designed twice - then built once.</p>
-      <div class="svc-page-actions">
-        <a href="contact.html" class="btn btn-primary">Discuss Your Project</a>
-        <a href="projects.html" class="btn btn-outline">View Our Work</a>
-      </div>
+      <p class="svc-hero-tag">Your home, designed twice - then built once.</p>
+      <div class="svc-page-actions"><a href="contact.html" class="btn btn-primary">Discuss Your Project</a><a href="projects.html" class="btn btn-outline">View Our Work</a></div>
     </div>
+    <div class="svc-hero-media"><picture><source srcset="assets/images/services/custom-homes-hero.webp" type="image/webp"><img src="assets/images/services/custom-homes-hero.jpg" alt="Custom Homes - UniqHaus Bay Area design-build" loading="eager" /></picture></div>
   </section>
 
   <section class="svc-page-body">
     <div class="container">
-      <p class="svc-page-lead">Ground-up custom homes built by one studio. We design every detail in full 3D first, itemize every material, then build - so there are no surprises between the plan you approve and the home you move into.</p>
-      <div class="svc-modal-grid">
-        <div class="svc-modal-col"><h4>What&rsquo;s included</h4><ul class="svc-modal-list svc-modal-list--check">
-          <li>Full 2D + 3D design of the entire home</li>
+      <p class="svc-page-lead svc-lead-dc">Ground-up custom homes built by one studio. We design every detail in full 3D first, itemize every material, then build - so there are no surprises between the plan you approve and the home you move into.</p>
+      <div class="svc-two">
+        <div class="svc-two-text">
+          <div class="svc-kicker">What&rsquo;s included</div>
+          <ul class="svc-check"><li>Full 2D + 3D design of the entire home</li>
           <li>Permit-ready drawings and full agency management</li>
           <li>Structural concrete, seismic, and liquefaction-zone expertise</li>
           <li>Global material sourcing - from Italian marble to custom millwork</li>
           <li>Itemized scope - every material priced line by line</li>
-          <li>Single point of contact from first sketch to final walkthrough</li>
-        </ul></div>
-        <div class="svc-modal-col"><h4>How we work</h4><ul class="svc-modal-list svc-modal-list--arrow">
-          <li>Phase 1 design, Phase 2 build - all decisions locked before construction</li>
-          <li>The price you approve is the price you pay</li>
-          <li>Weekly photo updates and milestone reports</li>
-        </ul></div>
+          <li>Single point of contact from first sketch to final walkthrough</li></ul>
+        </div>
+        <div class="svc-two-media"><picture><source srcset="assets/images/services/custom-homes-detail.webp" type="image/webp"><img src="assets/images/services/custom-homes-detail.jpg" alt="Custom Homes detail - UniqHaus" loading="lazy" /></picture></div>
       </div>
-      <div class="svc-modal-meta"><span>Timeline: 12-18 months (design 2-4, build 10-14)</span><span>Investment: $250-$500+/sq ft</span></div>
-      <div class="svc-faq">
-        <h2>Frequently asked questions</h2>
+      <div class="svc-process">
+        <div class="svc-kicker">How we work</div>
+        <div class="svc-steps"><div class="svc-step"><div class="num">01</div><p>Phase 1 design, Phase 2 build - all decisions locked before construction</p></div><div class="svc-step"><div class="num">02</div><p>The price you approve is the price you pay</p></div><div class="svc-step"><div class="num">03</div><p>Weekly photo updates and milestone reports</p></div></div>
+      </div>
+      <div class="svc-spec"><span>Timeline: 12-18 months (design 2-4, build 10-14)</span><span>Investment: $250-$500+/sq ft</span></div>
+      <div class="svc-faq"><h2>Frequently asked questions</h2>
         <details><summary>How much does Custom Homes cost, and how long does it take?</summary><p>Timeline: 12-18 months (design 2-4, build 10-14); Investment: $250-$500+/sq ft. You get exact, itemized pricing during the design phase &mdash; before any commitment.</p></details>
         <details><summary>Do you handle design, 3D, and permits too?</summary><p>Yes. UniqHaus is one studio handling architecture, interior design, 3D visualization, permitting, and construction &mdash; so design intent, budget, and permits never get lost in a handoff.</p></details>
-        <details><summary>Which Bay Area cities do you serve?</summary><p>We work across the Bay Area including San Jose, Palo Alto, Los Gatos, Saratoga, Sunnyvale, Cupertino, Mountain View, Campbell, Los Altos, Menlo Park and 60+ surrounding communities.</p></details>
-      </div>
+        <details><summary>Which Bay Area cities do you serve?</summary><p>We work across the Bay Area including San Jose, Palo Alto, Los Gatos, Saratoga, Sunnyvale, Cupertino, Mountain View, Campbell, Los Altos, Menlo Park and 60+ surrounding communities.</p></details></div>
     </div>
   </section>
 

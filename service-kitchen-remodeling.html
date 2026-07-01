@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" /></noscript>
   <link rel="stylesheet" href="style.css" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NJXQKZ6K');</script>
   <script type="application/ld+json">
@@ -49,43 +49,40 @@
     </div>
   </nav>
 
-  <section class="svc-page-hero">
-    <div class="container">
+    <section class="svc-hero-split">
+    <div class="svc-hero-text">
       <p class="section-label">SERVICE</p>
       <h1>Kitchen Remodeling</h1>
-      <p class="tagline">See every cabinet before demolition day.</p>
-      <div class="svc-page-actions">
-        <a href="contact.html" class="btn btn-primary">Discuss Your Project</a>
-        <a href="projects.html" class="btn btn-outline">View Our Work</a>
-      </div>
+      <p class="svc-hero-tag">See every cabinet before demolition day.</p>
+      <div class="svc-page-actions"><a href="contact.html" class="btn btn-primary">Discuss Your Project</a><a href="projects.html" class="btn btn-outline">View Our Work</a></div>
     </div>
+    <div class="svc-hero-media"><picture><source srcset="assets/images/services/kitchen-remodeling-hero.webp" type="image/webp"><img src="assets/images/services/kitchen-remodeling-hero.jpg" alt="Kitchen Remodeling - UniqHaus Bay Area design-build" loading="eager" /></picture></div>
   </section>
 
   <section class="svc-page-body">
     <div class="container">
-      <p class="svc-page-lead">The kitchen is the most complex room to remodel - every decision affects the next. We design it fully in 3D and lock all selections before any demolition begins.</p>
-      <div class="svc-modal-grid">
-        <div class="svc-modal-col"><h4>What&rsquo;s included</h4><ul class="svc-modal-list svc-modal-list--check">
-          <li>Complete layout redesign optimizing the work triangle</li>
+      <p class="svc-page-lead svc-lead-dc">The kitchen is the most complex room to remodel - every decision affects the next. We design it fully in 3D and lock all selections before any demolition begins.</p>
+      <div class="svc-two">
+        <div class="svc-two-text">
+          <div class="svc-kicker">What&rsquo;s included</div>
+          <ul class="svc-check"><li>Complete layout redesign optimizing the work triangle</li>
           <li>Custom and semi-custom cabinetry</li>
           <li>Stone countertops and backsplash</li>
           <li>Lighting and electrical design</li>
           <li>Plumbing fixtures and appliance integration</li>
-          <li>Flooring and interior painting</li>
-        </ul></div>
-        <div class="svc-modal-col"><h4>How we work</h4><ul class="svc-modal-list svc-modal-list--arrow">
-          <li>Every cabinet, countertop, and fixture seen in 3D first</li>
-          <li>Appliance dimensions and clearances verified before construction</li>
-          <li>Selections locked - no mid-project swaps</li>
-        </ul></div>
+          <li>Flooring and interior painting</li></ul>
+        </div>
+        <div class="svc-two-media"><picture><source srcset="assets/images/services/kitchen-remodeling-detail.webp" type="image/webp"><img src="assets/images/services/kitchen-remodeling-detail.jpg" alt="Kitchen Remodeling detail - UniqHaus" loading="lazy" /></picture></div>
       </div>
-      <div class="svc-modal-meta"><span>Design: 3-6 weeks</span><span>Construction: 8-16 weeks</span><span>Investment: $75K-$200K+</span></div>
-      <div class="svc-faq">
-        <h2>Frequently asked questions</h2>
+      <div class="svc-process">
+        <div class="svc-kicker">How we work</div>
+        <div class="svc-steps"><div class="svc-step"><div class="num">01</div><p>Every cabinet, countertop, and fixture seen in 3D first</p></div><div class="svc-step"><div class="num">02</div><p>Appliance dimensions and clearances verified before construction</p></div><div class="svc-step"><div class="num">03</div><p>Selections locked - no mid-project swaps</p></div></div>
+      </div>
+      <div class="svc-spec"><span>Design: 3-6 weeks</span><span>Construction: 8-16 weeks</span><span>Investment: $75K-$200K+</span></div>
+      <div class="svc-faq"><h2>Frequently asked questions</h2>
         <details><summary>How much does Kitchen Remodeling cost, and how long does it take?</summary><p>Design: 3-6 weeks; Construction: 8-16 weeks; Investment: $75K-$200K+. You get exact, itemized pricing during the design phase &mdash; before any commitment.</p></details>
         <details><summary>Do you handle design, 3D, and permits too?</summary><p>Yes. UniqHaus is one studio handling architecture, interior design, 3D visualization, permitting, and construction &mdash; so design intent, budget, and permits never get lost in a handoff.</p></details>
-        <details><summary>Which Bay Area cities do you serve?</summary><p>We work across the Bay Area including San Jose, Palo Alto, Los Gatos, Saratoga, Sunnyvale, Cupertino, Mountain View, Campbell, Los Altos, Menlo Park and 60+ surrounding communities.</p></details>
-      </div>
+        <details><summary>Which Bay Area cities do you serve?</summary><p>We work across the Bay Area including San Jose, Palo Alto, Los Gatos, Saratoga, Sunnyvale, Cupertino, Mountain View, Campbell, Los Altos, Menlo Park and 60+ surrounding communities.</p></details></div>
     </div>
   </section>
 

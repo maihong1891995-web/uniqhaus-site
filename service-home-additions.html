@@ -18,7 +18,7 @@
   <meta name="twitter:card" content="summary_large_image" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" /></noscript>
   <link rel="stylesheet" href="style.css" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NJXQKZ6K');</script>
   <script type="application/ld+json">
@@ -49,42 +49,39 @@
     </div>
   </nav>
 
-  <section class="svc-page-hero">
-    <div class="container">
+    <section class="svc-hero-split">
+    <div class="svc-hero-text">
       <p class="section-label">SERVICE</p>
       <h1>Home Additions</h1>
-      <p class="tagline">Expand without moving.</p>
-      <div class="svc-page-actions">
-        <a href="contact.html" class="btn btn-primary">Discuss Your Project</a>
-        <a href="projects.html" class="btn btn-outline">View Our Work</a>
-      </div>
+      <p class="svc-hero-tag">Expand without moving.</p>
+      <div class="svc-page-actions"><a href="contact.html" class="btn btn-primary">Discuss Your Project</a><a href="projects.html" class="btn btn-outline">View Our Work</a></div>
     </div>
+    <div class="svc-hero-media"><picture><source srcset="assets/images/services/home-additions-hero.webp" type="image/webp"><img src="assets/images/services/home-additions-hero.jpg" alt="Home Additions - UniqHaus Bay Area design-build" loading="eager" /></picture></div>
   </section>
 
   <section class="svc-page-body">
     <div class="container">
-      <p class="svc-page-lead">Second-story additions, room expansions, and bump-outs that blend seamlessly with your existing home - backed by deep structural engineering.</p>
-      <div class="svc-modal-grid">
-        <div class="svc-modal-col"><h4>What&rsquo;s included</h4><ul class="svc-modal-list svc-modal-list--check">
-          <li>Second-story additions with foundation verification</li>
+      <p class="svc-page-lead svc-lead-dc">Second-story additions, room expansions, and bump-outs that blend seamlessly with your existing home - backed by deep structural engineering.</p>
+      <div class="svc-two">
+        <div class="svc-two-text">
+          <div class="svc-kicker">What&rsquo;s included</div>
+          <ul class="svc-check"><li>Second-story additions with foundation verification</li>
           <li>Room additions - bedrooms, family rooms, home offices</li>
           <li>Bump-outs and extensions (kitchen, bath, sunroom)</li>
           <li>Master-suite additions with en-suite and walk-in closet</li>
-          <li>Load-bearing modifications, foundation, and seismic work</li>
-        </ul></div>
-        <div class="svc-modal-col"><h4>How we work</h4><ul class="svc-modal-list svc-modal-list--arrow">
-          <li>Structural capacity evaluated during the design phase</li>
-          <li>Designed in 3D before we build</li>
-          <li>Stay in your home where the addition allows</li>
-        </ul></div>
+          <li>Load-bearing modifications, foundation, and seismic work</li></ul>
+        </div>
+        <div class="svc-two-media"><picture><source srcset="assets/images/services/home-additions-detail.webp" type="image/webp"><img src="assets/images/services/home-additions-detail.jpg" alt="Home Additions detail - UniqHaus" loading="lazy" /></picture></div>
       </div>
-      <div class="svc-modal-meta"><span>Most additions: 6-12 months</span><span>Second-story: 8-14 months</span><span>Investment: $250-$500/sq ft</span></div>
-      <div class="svc-faq">
-        <h2>Frequently asked questions</h2>
+      <div class="svc-process">
+        <div class="svc-kicker">How we work</div>
+        <div class="svc-steps"><div class="svc-step"><div class="num">01</div><p>Structural capacity evaluated during the design phase</p></div><div class="svc-step"><div class="num">02</div><p>Designed in 3D before we build</p></div><div class="svc-step"><div class="num">03</div><p>Stay in your home where the addition allows</p></div></div>
+      </div>
+      <div class="svc-spec"><span>Most additions: 6-12 months</span><span>Second-story: 8-14 months</span><span>Investment: $250-$500/sq ft</span></div>
+      <div class="svc-faq"><h2>Frequently asked questions</h2>
         <details><summary>How much does Home Additions cost, and how long does it take?</summary><p>Most additions: 6-12 months; Second-story: 8-14 months; Investment: $250-$500/sq ft. You get exact, itemized pricing during the design phase &mdash; before any commitment.</p></details>
         <details><summary>Do you handle design, 3D, and permits too?</summary><p>Yes. UniqHaus is one studio handling architecture, interior design, 3D visualization, permitting, and construction &mdash; so design intent, budget, and permits never get lost in a handoff.</p></details>
-        <details><summary>Which Bay Area cities do you serve?</summary><p>We work across the Bay Area including San Jose, Palo Alto, Los Gatos, Saratoga, Sunnyvale, Cupertino, Mountain View, Campbell, Los Altos, Menlo Park and 60+ surrounding communities.</p></details>
-      </div>
+        <details><summary>Which Bay Area cities do you serve?</summary><p>We work across the Bay Area including San Jose, Palo Alto, Los Gatos, Saratoga, Sunnyvale, Cupertino, Mountain View, Campbell, Los Altos, Menlo Park and 60+ surrounding communities.</p></details></div>
     </div>
   </section>
 

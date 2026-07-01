@@ -118,11 +118,12 @@ document.addEventListener('click', (event) => {
   }
 });
 
+let __docHeight = document.documentElement.scrollHeight - window.innerHeight;
+window.addEventListener('resize', () => { __docHeight = document.documentElement.scrollHeight - window.innerHeight; }, { passive: true });
 window.addEventListener('scroll', () => {
-  const documentHeight = document.documentElement.scrollHeight - window.innerHeight;
-  if (documentHeight <= 0) return;
+  if (__docHeight <= 0) return;
 
-  const scrollPercent = Math.round((window.scrollY / documentHeight) * 100);
+  const scrollPercent = Math.round((window.scrollY / __docHeight) * 100);
 
   [50, 90].forEach((milestone) => {
     if (scrollPercent >= milestone && !trackedScrollMilestones.has(milestone)) {
@@ -209,18 +210,20 @@ if (currentPage && navPageLinks.length) {
 const sections    = document.querySelectorAll('section[id]');
 const navAnchors  = document.querySelectorAll('.nav-links a[href^="#"]');
 
+let __sectionOffsets = [];
+const measureSections = () => {
+  __sectionOffsets = Array.from(sections).map(s => ({ id: s.getAttribute('id'), top: s.offsetTop, bottom: s.offsetTop + s.offsetHeight }));
+};
+
 const activateNavLink = () => {
-  if (!sections.length || !navAnchors.length) return;
+  if (!__sectionOffsets.length || !navAnchors.length) return;
 
   const scrollPos = window.scrollY + 100;
-  sections.forEach(section => {
-    const top    = section.offsetTop;
-    const height = section.offsetHeight;
-    const id     = section.getAttribute('id');
-    if (scrollPos >= top && scrollPos < top + height) {
+  __sectionOffsets.forEach(s => {
+    if (scrollPos >= s.top && scrollPos < s.bottom) {
       navAnchors.forEach(a => {
         a.classList.remove('active');
-        if (a.getAttribute('href') === `#${id}`) {
+        if (a.getAttribute('href') === `#${s.id}`) {
           a.classList.add('active');
         }
       });
@@ -229,6 +232,9 @@ const activateNavLink = () => {
 };
 
 if (sections.length && navAnchors.length) {
+  measureSections();
+  window.addEventListener('resize', measureSections, { passive: true });
+  window.addEventListener('load', measureSections);
   window.addEventListener('scroll', activateNavLink, { passive: true });
   activateNavLink();
 }
@@ -938,8 +944,10 @@ projectCards.forEach(card => {
   const img = card.querySelector('.project-img');
   if (!img) return;
 
+  let rect = null;
+  card.addEventListener('mouseenter', () => { rect = card.getBoundingClientRect(); });
   card.addEventListener('mousemove', (e) => {
-    const rect = card.getBoundingClientRect();
+    if (!rect) rect = card.getBoundingClientRect();
     const x = (e.clientX - rect.left) / rect.width  - 0.5;
     const y = (e.clientY - rect.top)  / rect.height - 0.5;
     img.style.transform = `scale(1.06) translate(${x * -8}px, ${y * -8}px)`;
@@ -947,6 +955,7 @@ projectCards.forEach(card => {
 
   card.addEventListener('mouseleave', () => {
     img.style.transform = '';
+    rect = null;
   });
 });
 
