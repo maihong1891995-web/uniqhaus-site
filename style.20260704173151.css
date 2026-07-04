@@ -751,6 +751,12 @@ body[data-page="process"] .page-hero-copy h1 {
   color: var(--gold-dark);
 }
 
+/* offset anchor jumps so the fixed navbar doesn't cover section headings */
+.blog-article-main h2,
+.blog-article-main [id] {
+  scroll-margin-top: 100px;
+}
+
 .article-card {
   border: 1px solid var(--border-dark);
   background: var(--white);
@@ -815,6 +821,40 @@ body[data-page="process"] .page-hero-copy h1 {
 .article-lead a:hover {
   color: var(--gold);
 }
+
+.article-prose table {
+  width: 100%;
+  border-collapse: collapse;
+  font-family: 'Montserrat', sans-serif;
+  font-size: 0.9rem;
+  line-height: 1.45;
+  margin: 0.3rem 0;
+  background: #fff;
+  border: 1px solid #e6dfd2;
+  border-radius: 6px;
+  overflow: hidden;
+}
+
+.article-prose thead th {
+  background: #1f2a3a;
+  color: #f5f0e8;
+  text-align: left;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.article-prose th,
+.article-prose td {
+  padding: 0.7rem 0.9rem;
+  border-bottom: 1px solid #ece5d8;
+  vertical-align: top;
+  color: #4f5560;
+}
+
+.article-prose tbody tr:nth-child(even) { background: #faf7f1; }
+.article-prose tbody tr:last-child td { border-bottom: none; }
+.article-prose td strong,
+.article-prose th strong { color: #1f2a3a; }
 
 .in-content-callout {
   margin: 0.8rem 0;
