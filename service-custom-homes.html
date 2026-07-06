@@ -19,14 +19,515 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" /></noscript>
-  <link rel="stylesheet" href="style.20260706091032.css" />
+  <link rel="stylesheet" href="style.20260706104143.css" />
   <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);})(window,document,'script','dataLayer','GTM-NJXQKZ6K');</script>
   <script type="application/ld+json">
   {"@context":"https://schema.org","@type":"Service","serviceType":"Custom Homes","provider":{"@type":"GeneralContractor","name":"UniqHaus","telephone":"+1-650-866-5665","areaServed":"San Francisco Bay Area"},"areaServed":"San Francisco Bay Area","name":"Custom Homes","description":"Ground-up custom homes in the Bay Area, designed in full 3D and itemized before we build.","url":"https://theuniqhaus.com/service-custom-homes.html"}
   </script>
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"FAQPage","mainEntity":[{"@type":"Question","name":"How much does Custom Homes cost, and how long does it take?","acceptedAnswer":{"@type":"Answer","text":"Timeline: 12-18 months (design 2-4, build 10-14); Investment: $250-$500+/sq ft. You get exact, itemized pricing during the design phase, before any commitment."}},{"@type":"Question","name":"Do you handle design, 3D, and permits too?","acceptedAnswer":{"@type":"Answer","text":"Yes. UniqHaus is one studio handling architecture, interior design, 3D visualization, permitting, and construction."}},{"@type":"Question","name":"Which Bay Area cities do you serve?","acceptedAnswer":{"@type":"Answer","text":"San Jose, Palo Alto, Los Gatos, Saratoga, Sunnyvale, Cupertino, Mountain View, Campbell, Los Altos, Menlo Park and 60+ surrounding communities."}}]}
-  </script>
+
+<style>
+  /* ===== 2D Design — editorial brochure layout (scoped under .bro) ===== */
+  .bro{
+    --nv:#1f2a3a; --nv2:#18222f; --cr:#f5f0e8; --cr2:#ece4d6;
+    --gd:#b8943f; --gdl:#d8c39a;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Montserrat',system-ui,sans-serif;
+    --mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+    font-family:var(--sans);
+  }
+  .bro section{padding:clamp(3.2rem,7vw,6rem) 0;}
+  .bro .wrap{width:min(1160px,92vw);margin:0 auto;}
+  .bro .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.28em;
+    font-size:.68rem;color:var(--gd);margin:0 0 1.1rem;font-weight:500;}
+  .bro h2{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spacing:.005em;
+    font-size:clamp(2.1rem,4.2vw,3.3rem);margin:0 0 1.1rem;text-wrap:balance;}
+  .bro h2 em{font-style:italic;font-weight:500;}
+  .bro .rule{height:1px;border:0;background:linear-gradient(90deg,var(--gd),transparent);margin:1.4rem 0;}
+  .bro .lead{font-size:1.02rem;line-height:1.75;max-width:46ch;}
+
+  /* dark / light section skins */
+  .bro .dark{background:var(--nv);color:#c7cfd9;}
+  .bro .dark h2{color:#fff;} .bro .dark h2 em{color:var(--gdl);}
+  .bro .light{background:var(--cr);color:#565c64;}
+  .bro .light h2{color:var(--nv);} .bro .light h2 em{color:var(--gd);}
+
+  /* HERO */
+  .bro-hero{background:var(--nv);color:#c7cfd9;padding-top:calc(clamp(3.2rem,7vw,6rem) + 64px);}
+  .bro-hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .bro-pill{display:inline-block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.22em;
+    font-size:.62rem;color:var(--gdl);border:1px solid rgba(184,148,63,.55);border-radius:999px;
+    padding:.55rem 1.1rem;margin-bottom:1.8rem;}
+  .bro-hero .svc-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.3em;font-size:.7rem;color:var(--gd);margin:0 0 .6rem;}
+  .bro-hero h1{font-family:var(--serif);font-weight:600;color:#fff;line-height:.98;
+    font-size:clamp(3.2rem,8vw,5.6rem);margin:0;}
+  .bro-hero .tag{font-family:var(--serif);font-style:italic;color:var(--gdl);
+    font-size:clamp(1.3rem,2.6vw,1.8rem);margin:1rem 0 0;}
+  .bro-hero .cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem;}
+  .bro-hero .media{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35);
+    border:1px solid rgba(216,195,154,.25);aspect-ratio:4/3.05;}
+  .bro-hero .media img{width:100%;height:100%;object-fit:cover;display:block;}
+  .bro .media picture{display:block;width:100%;height:100%;}
+  .bro-btn{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.04em;
+    padding:.85rem 1.5rem;border-radius:3px;text-decoration:none;display:inline-block;transition:.2s;}
+  .bro-btn.solid{background:var(--gd);color:#1b2430;} .bro-btn.solid:hover{background:var(--gdl);}
+  .bro-btn.ghost{border:1px solid rgba(216,195,154,.5);color:var(--gdl);} .bro-btn.ghost:hover{background:rgba(216,195,154,.1);}
+  .bro-strip{border-top:1px solid rgba(255,255,255,.08);margin-top:clamp(2.4rem,5vw,3.6rem);padding-top:1.3rem;
+    font-family:var(--mono);letter-spacing:.24em;text-transform:uppercase;font-size:.6rem;color:#7f8b98;
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+  /* WHY — two column */
+  .bro-why .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2.4rem,5vw,4.5rem);}
+  .bro-check{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;}
+  .bro-check li{position:relative;padding-left:2rem;line-height:1.5;color:#4f5560;}
+  .bro-check li::before{content:"";position:absolute;left:0;top:.35em;width:15px;height:9px;
+    border-left:2px solid var(--gd);border-bottom:2px solid var(--gd);transform:rotate(-45deg);}
+  .bro-ranges .rlab{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.64rem;color:#9aa0a6;margin:0 0 1.2rem;}
+  .bro-range{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    padding:1rem 0;border-bottom:1px solid rgba(31,42,58,.14);}
+  .bro-range:first-of-type{border-top:1px solid rgba(31,42,58,.14);}
+  .bro-range h4{font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--nv);margin:0 0 .2rem;}
+  .bro-range p{margin:0;font-size:.83rem;color:#6b7178;}
+  .bro-range .mo{font-family:var(--mono);font-size:.82rem;color:var(--gd);white-space:nowrap;letter-spacing:.04em;}
+  .bro-recent{margin-top:1.8rem;}
+  .bro-recent .rlab{margin-bottom:.5rem;}
+  .bro-recent p{font-family:var(--serif);font-size:1.15rem;color:var(--nv);margin:0;line-height:1.5;}
+
+  /* WHAT'S INCLUDED — text + image */
+  .bro-incl .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .bro-diamond{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;}
+  .bro-diamond li{position:relative;padding-left:1.8rem;line-height:1.5;color:#c7cfd9;}
+  .bro-diamond li::before{content:"";position:absolute;left:0;top:.45em;width:9px;height:9px;background:var(--gd);transform:rotate(45deg);}
+  .bro-incl .media{border-radius:6px;overflow:hidden;aspect-ratio:4/3.2;border:1px solid rgba(216,195,154,.2);}
+  .bro-incl .media img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* HOW WE WORK */
+  .bro-how .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2.2rem,5vw,4rem);align-items:start;}
+  .bro-steps{display:grid;gap:1.3rem;margin:.4rem 0 1.8rem;}
+  .bro-step{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:baseline;
+    padding-bottom:1.3rem;border-bottom:1px solid rgba(31,42,58,.12);}
+  .bro-step .n{font-family:var(--mono);font-weight:700;font-size:1.15rem;color:var(--gd);}
+  .bro-step p{margin:0;font-size:1.02rem;color:var(--nv);}
+  .bro-pledge{font-family:var(--serif);font-style:italic;font-size:1.3rem;line-height:1.5;color:var(--nv);max-width:32ch;}
+  .bro-scope{background:var(--nv);color:#c7cfd9;border-radius:6px;padding:2rem;}
+  .bro-scope .rlab{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.62rem;color:var(--gd);margin:0 0 1.4rem;}
+  .bro-scope .row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .bro-scope .row:last-child{border-bottom:0;}
+  .bro-scope .k{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;color:#8b96a3;}
+  .bro-scope .v{font-family:var(--serif);font-size:1.45rem;color:#fff;}
+
+  /* SELECTED WORK */
+  .bro-work .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.2rem;margin-top:.6rem;}
+  .bro-work .col2{display:grid;gap:1.2rem;}
+  .bro-card{position:relative;border-radius:6px;overflow:hidden;display:block;}
+  .bro-card.big{aspect-ratio:1/1.02;} .bro-card.sm{aspect-ratio:4/3.2;}
+  .bro-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
+  .bro-card:hover img{transform:scale(1.04);}
+  .bro-card .cap{position:absolute;left:0;right:0;bottom:0;padding:1.1rem 1.2rem;
+    background:linear-gradient(transparent,rgba(15,21,30,.82));}
+  .bro-card .cap h4{font-family:var(--serif);font-weight:600;color:#fff;font-size:1.25rem;margin:0;}
+  .bro-card .cap span{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;color:var(--gdl);}
+  .bro-work .foot{margin-top:1.8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.6rem;color:#8b96a3;}
+  .bro-work .foot a{color:var(--gdl);text-decoration:none;}
+
+  /* TESTIMONIALS */
+  .bro-stars{color:var(--gd);letter-spacing:.3em;font-size:1.1rem;margin:.2rem 0 2rem;}
+  .bro-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+  .bro-quote p{font-family:var(--serif);font-style:italic;font-size:1.12rem;line-height:1.5;color:var(--nv);margin:0 0 1rem;}
+  .bro-quote .who{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.62rem;color:var(--gd);}
+
+  /* CTA */
+  .bro-cta{background:var(--nv);color:#c7cfd9;text-align:center;}
+  .bro-cta h2{color:#fff;}
+  .bro-cta .tag{font-family:var(--serif);font-style:italic;color:var(--gdl);font-size:1.3rem;margin:.2rem 0 1.8rem;}
+  .bro-cta .cta{display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;}
+  .bro-cta .call{font-family:var(--mono);letter-spacing:.08em;color:#c7cfd9;text-decoration:none;font-size:.9rem;}
+  .bro-cta .call b{color:#fff;}
+
+  @media(max-width:860px){
+    .bro-hero .grid,.bro-why .grid,.bro-incl .grid,.bro-how .grid,.bro-work .grid,.bro-quotes{grid-template-columns:1fr;}
+    .bro-hero .media{order:-1;}
+    .bro-incl .media{order:-1;}
+  }
+  </style>
+
+<style>
+  /* ===== 2D Design — editorial brochure layout (scoped under .bro) ===== */
+  .bro{
+    --nv:#1f2a3a; --nv2:#18222f; --cr:#f5f0e8; --cr2:#ece4d6;
+    --gd:#b8943f; --gdl:#d8c39a;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Montserrat',system-ui,sans-serif;
+    --mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+    font-family:var(--sans);
+  }
+  .bro section{padding:clamp(3.2rem,7vw,6rem) 0;}
+  .bro .wrap{width:min(1160px,92vw);margin:0 auto;}
+  .bro .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.28em;
+    font-size:.68rem;color:var(--gd);margin:0 0 1.1rem;font-weight:500;}
+  .bro h2{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spacing:.005em;
+    font-size:clamp(2.1rem,4.2vw,3.3rem);margin:0 0 1.1rem;text-wrap:balance;}
+  .bro h2 em{font-style:italic;font-weight:500;}
+  .bro .rule{height:1px;border:0;background:linear-gradient(90deg,var(--gd),transparent);margin:1.4rem 0;}
+  .bro .lead{font-size:1.02rem;line-height:1.75;max-width:46ch;}
+
+  /* dark / light section skins */
+  .bro .dark{background:var(--nv);color:#c7cfd9;}
+  .bro .dark h2{color:#fff;} .bro .dark h2 em{color:var(--gdl);}
+  .bro .light{background:var(--cr);color:#565c64;}
+  .bro .light h2{color:var(--nv);} .bro .light h2 em{color:var(--gd);}
+
+  /* HERO */
+  .bro-hero{background:var(--nv);color:#c7cfd9;padding-top:calc(clamp(3.2rem,7vw,6rem) + 64px);}
+  .bro-hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .bro-pill{display:inline-block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.22em;
+    font-size:.62rem;color:var(--gdl);border:1px solid rgba(184,148,63,.55);border-radius:999px;
+    padding:.55rem 1.1rem;margin-bottom:1.8rem;}
+  .bro-hero .svc-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.3em;font-size:.7rem;color:var(--gd);margin:0 0 .6rem;}
+  .bro-hero h1{font-family:var(--serif);font-weight:600;color:#fff;line-height:.98;
+    font-size:clamp(3.2rem,8vw,5.6rem);margin:0;}
+  .bro-hero .tag{font-family:var(--serif);font-style:italic;color:var(--gdl);
+    font-size:clamp(1.3rem,2.6vw,1.8rem);margin:1rem 0 0;}
+  .bro-hero .cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem;}
+  .bro-hero .media{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35);
+    border:1px solid rgba(216,195,154,.25);aspect-ratio:4/3.05;}
+  .bro-hero .media img{width:100%;height:100%;object-fit:cover;display:block;}
+  .bro .media picture{display:block;width:100%;height:100%;}
+  .bro-btn{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.04em;
+    padding:.85rem 1.5rem;border-radius:3px;text-decoration:none;display:inline-block;transition:.2s;}
+  .bro-btn.solid{background:var(--gd);color:#1b2430;} .bro-btn.solid:hover{background:var(--gdl);}
+  .bro-btn.ghost{border:1px solid rgba(216,195,154,.5);color:var(--gdl);} .bro-btn.ghost:hover{background:rgba(216,195,154,.1);}
+  .bro-strip{border-top:1px solid rgba(255,255,255,.08);margin-top:clamp(2.4rem,5vw,3.6rem);padding-top:1.3rem;
+    font-family:var(--mono);letter-spacing:.24em;text-transform:uppercase;font-size:.6rem;color:#7f8b98;
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+  /* WHY — two column */
+  .bro-why .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2.4rem,5vw,4.5rem);}
+  .bro-check{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;}
+  .bro-check li{position:relative;padding-left:2rem;line-height:1.5;color:#4f5560;}
+  .bro-check li::before{content:"";position:absolute;left:0;top:.35em;width:15px;height:9px;
+    border-left:2px solid var(--gd);border-bottom:2px solid var(--gd);transform:rotate(-45deg);}
+  .bro-ranges .rlab{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.64rem;color:#9aa0a6;margin:0 0 1.2rem;}
+  .bro-range{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    padding:1rem 0;border-bottom:1px solid rgba(31,42,58,.14);}
+  .bro-range:first-of-type{border-top:1px solid rgba(31,42,58,.14);}
+  .bro-range h4{font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--nv);margin:0 0 .2rem;}
+  .bro-range p{margin:0;font-size:.83rem;color:#6b7178;}
+  .bro-range .mo{font-family:var(--mono);font-size:.82rem;color:var(--gd);white-space:nowrap;letter-spacing:.04em;}
+  .bro-recent{margin-top:1.8rem;}
+  .bro-recent .rlab{margin-bottom:.5rem;}
+  .bro-recent p{font-family:var(--serif);font-size:1.15rem;color:var(--nv);margin:0;line-height:1.5;}
+
+  /* WHAT'S INCLUDED — text + image */
+  .bro-incl .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .bro-diamond{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;}
+  .bro-diamond li{position:relative;padding-left:1.8rem;line-height:1.5;color:#c7cfd9;}
+  .bro-diamond li::before{content:"";position:absolute;left:0;top:.45em;width:9px;height:9px;background:var(--gd);transform:rotate(45deg);}
+  .bro-incl .media{border-radius:6px;overflow:hidden;aspect-ratio:4/3.2;border:1px solid rgba(216,195,154,.2);}
+  .bro-incl .media img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* HOW WE WORK */
+  .bro-how .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2.2rem,5vw,4rem);align-items:start;}
+  .bro-steps{display:grid;gap:1.3rem;margin:.4rem 0 1.8rem;}
+  .bro-step{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:baseline;
+    padding-bottom:1.3rem;border-bottom:1px solid rgba(31,42,58,.12);}
+  .bro-step .n{font-family:var(--mono);font-weight:700;font-size:1.15rem;color:var(--gd);}
+  .bro-step p{margin:0;font-size:1.02rem;color:var(--nv);}
+  .bro-pledge{font-family:var(--serif);font-style:italic;font-size:1.3rem;line-height:1.5;color:var(--nv);max-width:32ch;}
+  .bro-scope{background:var(--nv);color:#c7cfd9;border-radius:6px;padding:2rem;}
+  .bro-scope .rlab{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.62rem;color:var(--gd);margin:0 0 1.4rem;}
+  .bro-scope .row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .bro-scope .row:last-child{border-bottom:0;}
+  .bro-scope .k{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;color:#8b96a3;}
+  .bro-scope .v{font-family:var(--serif);font-size:1.45rem;color:#fff;}
+
+  /* SELECTED WORK */
+  .bro-work .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.2rem;margin-top:.6rem;}
+  .bro-work .col2{display:grid;gap:1.2rem;}
+  .bro-card{position:relative;border-radius:6px;overflow:hidden;display:block;}
+  .bro-card.big{aspect-ratio:1/1.02;} .bro-card.sm{aspect-ratio:4/3.2;}
+  .bro-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
+  .bro-card:hover img{transform:scale(1.04);}
+  .bro-card .cap{position:absolute;left:0;right:0;bottom:0;padding:1.1rem 1.2rem;
+    background:linear-gradient(transparent,rgba(15,21,30,.82));}
+  .bro-card .cap h4{font-family:var(--serif);font-weight:600;color:#fff;font-size:1.25rem;margin:0;}
+  .bro-card .cap span{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;color:var(--gdl);}
+  .bro-work .foot{margin-top:1.8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.6rem;color:#8b96a3;}
+  .bro-work .foot a{color:var(--gdl);text-decoration:none;}
+
+  /* TESTIMONIALS */
+  .bro-stars{color:var(--gd);letter-spacing:.3em;font-size:1.1rem;margin:.2rem 0 2rem;}
+  .bro-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+  .bro-quote p{font-family:var(--serif);font-style:italic;font-size:1.12rem;line-height:1.5;color:var(--nv);margin:0 0 1rem;}
+  .bro-quote .who{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.62rem;color:var(--gd);}
+
+  /* CTA */
+  .bro-cta{background:var(--nv);color:#c7cfd9;text-align:center;}
+  .bro-cta h2{color:#fff;}
+  .bro-cta .tag{font-family:var(--serif);font-style:italic;color:var(--gdl);font-size:1.3rem;margin:.2rem 0 1.8rem;}
+  .bro-cta .cta{display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;}
+  .bro-cta .call{font-family:var(--mono);letter-spacing:.08em;color:#c7cfd9;text-decoration:none;font-size:.9rem;}
+  .bro-cta .call b{color:#fff;}
+
+  @media(max-width:860px){
+    .bro-hero .grid,.bro-why .grid,.bro-incl .grid,.bro-how .grid,.bro-work .grid,.bro-quotes{grid-template-columns:1fr;}
+    .bro-hero .media{order:-1;}
+    .bro-incl .media{order:-1;}
+  }
+  </style>
+
+<style>
+  /* ===== 2D Design — editorial brochure layout (scoped under .bro) ===== */
+  .bro{
+    --nv:#1f2a3a; --nv2:#18222f; --cr:#f5f0e8; --cr2:#ece4d6;
+    --gd:#b8943f; --gdl:#d8c39a;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Montserrat',system-ui,sans-serif;
+    --mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+    font-family:var(--sans);
+  }
+  .bro section{padding:clamp(3.2rem,7vw,6rem) 0;}
+  .bro .wrap{width:min(1160px,92vw);margin:0 auto;}
+  .bro .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.28em;
+    font-size:.68rem;color:var(--gd);margin:0 0 1.1rem;font-weight:500;}
+  .bro h2{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spacing:.005em;
+    font-size:clamp(2.1rem,4.2vw,3.3rem);margin:0 0 1.1rem;text-wrap:balance;}
+  .bro h2 em{font-style:italic;font-weight:500;}
+  .bro .rule{height:1px;border:0;background:linear-gradient(90deg,var(--gd),transparent);margin:1.4rem 0;}
+  .bro .lead{font-size:1.02rem;line-height:1.75;max-width:46ch;}
+
+  /* dark / light section skins */
+  .bro .dark{background:var(--nv);color:#c7cfd9;}
+  .bro .dark h2{color:#fff;} .bro .dark h2 em{color:var(--gdl);}
+  .bro .light{background:var(--cr);color:#565c64;}
+  .bro .light h2{color:var(--nv);} .bro .light h2 em{color:var(--gd);}
+
+  /* HERO */
+  .bro-hero{background:var(--nv);color:#c7cfd9;padding-top:calc(clamp(3.2rem,7vw,6rem) + 64px);}
+  .bro-hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .bro-pill{display:inline-block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.22em;
+    font-size:.62rem;color:var(--gdl);border:1px solid rgba(184,148,63,.55);border-radius:999px;
+    padding:.55rem 1.1rem;margin-bottom:1.8rem;}
+  .bro-hero .svc-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.3em;font-size:.7rem;color:var(--gd);margin:0 0 .6rem;}
+  .bro-hero h1{font-family:var(--serif);font-weight:600;color:#fff;line-height:.98;
+    font-size:clamp(3.2rem,8vw,5.6rem);margin:0;}
+  .bro-hero .tag{font-family:var(--serif);font-style:italic;color:var(--gdl);
+    font-size:clamp(1.3rem,2.6vw,1.8rem);margin:1rem 0 0;}
+  .bro-hero .cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem;}
+  .bro-hero .media{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35);
+    border:1px solid rgba(216,195,154,.25);aspect-ratio:4/3.05;}
+  .bro-hero .media img{width:100%;height:100%;object-fit:cover;display:block;}
+  .bro .media picture{display:block;width:100%;height:100%;}
+  .bro-btn{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.04em;
+    padding:.85rem 1.5rem;border-radius:3px;text-decoration:none;display:inline-block;transition:.2s;}
+  .bro-btn.solid{background:var(--gd);color:#1b2430;} .bro-btn.solid:hover{background:var(--gdl);}
+  .bro-btn.ghost{border:1px solid rgba(216,195,154,.5);color:var(--gdl);} .bro-btn.ghost:hover{background:rgba(216,195,154,.1);}
+  .bro-strip{border-top:1px solid rgba(255,255,255,.08);margin-top:clamp(2.4rem,5vw,3.6rem);padding-top:1.3rem;
+    font-family:var(--mono);letter-spacing:.24em;text-transform:uppercase;font-size:.6rem;color:#7f8b98;
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+  /* WHY — two column */
+  .bro-why .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2.4rem,5vw,4.5rem);}
+  .bro-check{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;}
+  .bro-check li{position:relative;padding-left:2rem;line-height:1.5;color:#4f5560;}
+  .bro-check li::before{content:"";position:absolute;left:0;top:.35em;width:15px;height:9px;
+    border-left:2px solid var(--gd);border-bottom:2px solid var(--gd);transform:rotate(-45deg);}
+  .bro-ranges .rlab{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.64rem;color:#9aa0a6;margin:0 0 1.2rem;}
+  .bro-range{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    padding:1rem 0;border-bottom:1px solid rgba(31,42,58,.14);}
+  .bro-range:first-of-type{border-top:1px solid rgba(31,42,58,.14);}
+  .bro-range h4{font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--nv);margin:0 0 .2rem;}
+  .bro-range p{margin:0;font-size:.83rem;color:#6b7178;}
+  .bro-range .mo{font-family:var(--mono);font-size:.82rem;color:var(--gd);white-space:nowrap;letter-spacing:.04em;}
+  .bro-recent{margin-top:1.8rem;}
+  .bro-recent .rlab{margin-bottom:.5rem;}
+  .bro-recent p{font-family:var(--serif);font-size:1.15rem;color:var(--nv);margin:0;line-height:1.5;}
+
+  /* WHAT'S INCLUDED — text + image */
+  .bro-incl .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .bro-diamond{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;}
+  .bro-diamond li{position:relative;padding-left:1.8rem;line-height:1.5;color:#c7cfd9;}
+  .bro-diamond li::before{content:"";position:absolute;left:0;top:.45em;width:9px;height:9px;background:var(--gd);transform:rotate(45deg);}
+  .bro-incl .media{border-radius:6px;overflow:hidden;aspect-ratio:4/3.2;border:1px solid rgba(216,195,154,.2);}
+  .bro-incl .media img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* HOW WE WORK */
+  .bro-how .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2.2rem,5vw,4rem);align-items:start;}
+  .bro-steps{display:grid;gap:1.3rem;margin:.4rem 0 1.8rem;}
+  .bro-step{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:baseline;
+    padding-bottom:1.3rem;border-bottom:1px solid rgba(31,42,58,.12);}
+  .bro-step .n{font-family:var(--mono);font-weight:700;font-size:1.15rem;color:var(--gd);}
+  .bro-step p{margin:0;font-size:1.02rem;color:var(--nv);}
+  .bro-pledge{font-family:var(--serif);font-style:italic;font-size:1.3rem;line-height:1.5;color:var(--nv);max-width:32ch;}
+  .bro-scope{background:var(--nv);color:#c7cfd9;border-radius:6px;padding:2rem;}
+  .bro-scope .rlab{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.62rem;color:var(--gd);margin:0 0 1.4rem;}
+  .bro-scope .row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .bro-scope .row:last-child{border-bottom:0;}
+  .bro-scope .k{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;color:#8b96a3;}
+  .bro-scope .v{font-family:var(--serif);font-size:1.45rem;color:#fff;}
+
+  /* SELECTED WORK */
+  .bro-work .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.2rem;margin-top:.6rem;}
+  .bro-work .col2{display:grid;gap:1.2rem;}
+  .bro-card{position:relative;border-radius:6px;overflow:hidden;display:block;}
+  .bro-card.big{aspect-ratio:1/1.02;} .bro-card.sm{aspect-ratio:4/3.2;}
+  .bro-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
+  .bro-card:hover img{transform:scale(1.04);}
+  .bro-card .cap{position:absolute;left:0;right:0;bottom:0;padding:1.1rem 1.2rem;
+    background:linear-gradient(transparent,rgba(15,21,30,.82));}
+  .bro-card .cap h4{font-family:var(--serif);font-weight:600;color:#fff;font-size:1.25rem;margin:0;}
+  .bro-card .cap span{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;color:var(--gdl);}
+  .bro-work .foot{margin-top:1.8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.6rem;color:#8b96a3;}
+  .bro-work .foot a{color:var(--gdl);text-decoration:none;}
+
+  /* TESTIMONIALS */
+  .bro-stars{color:var(--gd);letter-spacing:.3em;font-size:1.1rem;margin:.2rem 0 2rem;}
+  .bro-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+  .bro-quote p{font-family:var(--serif);font-style:italic;font-size:1.12rem;line-height:1.5;color:var(--nv);margin:0 0 1rem;}
+  .bro-quote .who{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.62rem;color:var(--gd);}
+
+  /* CTA */
+  .bro-cta{background:var(--nv);color:#c7cfd9;text-align:center;}
+  .bro-cta h2{color:#fff;}
+  .bro-cta .tag{font-family:var(--serif);font-style:italic;color:var(--gdl);font-size:1.3rem;margin:.2rem 0 1.8rem;}
+  .bro-cta .cta{display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;}
+  .bro-cta .call{font-family:var(--mono);letter-spacing:.08em;color:#c7cfd9;text-decoration:none;font-size:.9rem;}
+  .bro-cta .call b{color:#fff;}
+
+  @media(max-width:860px){
+    .bro-hero .grid,.bro-why .grid,.bro-incl .grid,.bro-how .grid,.bro-work .grid,.bro-quotes{grid-template-columns:1fr;}
+    .bro-hero .media{order:-1;}
+    .bro-incl .media{order:-1;}
+  }
+  </style>
+
+<style>
+  /* ===== 2D Design — editorial brochure layout (scoped under .bro) ===== */
+  .bro{
+    --nv:#1f2a3a; --nv2:#18222f; --cr:#f5f0e8; --cr2:#ece4d6;
+    --gd:#b8943f; --gdl:#d8c39a;
+    --serif:'Cormorant Garamond',Georgia,serif;
+    --sans:'Montserrat',system-ui,sans-serif;
+    --mono:ui-monospace,'SFMono-Regular',Menlo,Consolas,monospace;
+    font-family:var(--sans);
+  }
+  .bro section{padding:clamp(3.2rem,7vw,6rem) 0;}
+  .bro .wrap{width:min(1160px,92vw);margin:0 auto;}
+  .bro .eyebrow{font-family:var(--mono);text-transform:uppercase;letter-spacing:.28em;
+    font-size:.68rem;color:var(--gd);margin:0 0 1.1rem;font-weight:500;}
+  .bro h2{font-family:var(--serif);font-weight:600;line-height:1.04;letter-spacing:.005em;
+    font-size:clamp(2.1rem,4.2vw,3.3rem);margin:0 0 1.1rem;text-wrap:balance;}
+  .bro h2 em{font-style:italic;font-weight:500;}
+  .bro .rule{height:1px;border:0;background:linear-gradient(90deg,var(--gd),transparent);margin:1.4rem 0;}
+  .bro .lead{font-size:1.02rem;line-height:1.75;max-width:46ch;}
+
+  /* dark / light section skins */
+  .bro .dark{background:var(--nv);color:#c7cfd9;}
+  .bro .dark h2{color:#fff;} .bro .dark h2 em{color:var(--gdl);}
+  .bro .light{background:var(--cr);color:#565c64;}
+  .bro .light h2{color:var(--nv);} .bro .light h2 em{color:var(--gd);}
+
+  /* HERO */
+  .bro-hero{background:var(--nv);color:#c7cfd9;padding-top:calc(clamp(3.2rem,7vw,6rem) + 64px);}
+  .bro-hero .grid{display:grid;grid-template-columns:1.05fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .bro-pill{display:inline-block;font-family:var(--mono);text-transform:uppercase;letter-spacing:.22em;
+    font-size:.62rem;color:var(--gdl);border:1px solid rgba(184,148,63,.55);border-radius:999px;
+    padding:.55rem 1.1rem;margin-bottom:1.8rem;}
+  .bro-hero .svc-label{font-family:var(--mono);text-transform:uppercase;letter-spacing:.3em;font-size:.7rem;color:var(--gd);margin:0 0 .6rem;}
+  .bro-hero h1{font-family:var(--serif);font-weight:600;color:#fff;line-height:.98;
+    font-size:clamp(3.2rem,8vw,5.6rem);margin:0;}
+  .bro-hero .tag{font-family:var(--serif);font-style:italic;color:var(--gdl);
+    font-size:clamp(1.3rem,2.6vw,1.8rem);margin:1rem 0 0;}
+  .bro-hero .cta{display:flex;gap:.9rem;flex-wrap:wrap;margin-top:2rem;}
+  .bro-hero .media{position:relative;border-radius:6px;overflow:hidden;box-shadow:0 30px 70px rgba(0,0,0,.35);
+    border:1px solid rgba(216,195,154,.25);aspect-ratio:4/3.05;}
+  .bro-hero .media img{width:100%;height:100%;object-fit:cover;display:block;}
+  .bro .media picture{display:block;width:100%;height:100%;}
+  .bro-btn{font-family:var(--sans);font-weight:600;font-size:.82rem;letter-spacing:.04em;
+    padding:.85rem 1.5rem;border-radius:3px;text-decoration:none;display:inline-block;transition:.2s;}
+  .bro-btn.solid{background:var(--gd);color:#1b2430;} .bro-btn.solid:hover{background:var(--gdl);}
+  .bro-btn.ghost{border:1px solid rgba(216,195,154,.5);color:var(--gdl);} .bro-btn.ghost:hover{background:rgba(216,195,154,.1);}
+  .bro-strip{border-top:1px solid rgba(255,255,255,.08);margin-top:clamp(2.4rem,5vw,3.6rem);padding-top:1.3rem;
+    font-family:var(--mono);letter-spacing:.24em;text-transform:uppercase;font-size:.6rem;color:#7f8b98;
+    display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;}
+
+  /* WHY — two column */
+  .bro-why .grid{display:grid;grid-template-columns:1.1fr .9fr;gap:clamp(2.4rem,5vw,4.5rem);}
+  .bro-check{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;}
+  .bro-check li{position:relative;padding-left:2rem;line-height:1.5;color:#4f5560;}
+  .bro-check li::before{content:"";position:absolute;left:0;top:.35em;width:15px;height:9px;
+    border-left:2px solid var(--gd);border-bottom:2px solid var(--gd);transform:rotate(-45deg);}
+  .bro-ranges .rlab{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.64rem;color:#9aa0a6;margin:0 0 1.2rem;}
+  .bro-range{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;
+    padding:1rem 0;border-bottom:1px solid rgba(31,42,58,.14);}
+  .bro-range:first-of-type{border-top:1px solid rgba(31,42,58,.14);}
+  .bro-range h4{font-family:var(--serif);font-weight:600;font-size:1.35rem;color:var(--nv);margin:0 0 .2rem;}
+  .bro-range p{margin:0;font-size:.83rem;color:#6b7178;}
+  .bro-range .mo{font-family:var(--mono);font-size:.82rem;color:var(--gd);white-space:nowrap;letter-spacing:.04em;}
+  .bro-recent{margin-top:1.8rem;}
+  .bro-recent .rlab{margin-bottom:.5rem;}
+  .bro-recent p{font-family:var(--serif);font-size:1.15rem;color:var(--nv);margin:0;line-height:1.5;}
+
+  /* WHAT'S INCLUDED — text + image */
+  .bro-incl .grid{display:grid;grid-template-columns:1fr 1fr;gap:clamp(2rem,5vw,4rem);align-items:center;}
+  .bro-diamond{list-style:none;padding:0;margin:1.6rem 0 0;display:grid;gap:1rem;}
+  .bro-diamond li{position:relative;padding-left:1.8rem;line-height:1.5;color:#c7cfd9;}
+  .bro-diamond li::before{content:"";position:absolute;left:0;top:.45em;width:9px;height:9px;background:var(--gd);transform:rotate(45deg);}
+  .bro-incl .media{border-radius:6px;overflow:hidden;aspect-ratio:4/3.2;border:1px solid rgba(216,195,154,.2);}
+  .bro-incl .media img{width:100%;height:100%;object-fit:cover;display:block;}
+
+  /* HOW WE WORK */
+  .bro-how .grid{display:grid;grid-template-columns:1.15fr .85fr;gap:clamp(2.2rem,5vw,4rem);align-items:start;}
+  .bro-steps{display:grid;gap:1.3rem;margin:.4rem 0 1.8rem;}
+  .bro-step{display:grid;grid-template-columns:auto 1fr;gap:1.2rem;align-items:baseline;
+    padding-bottom:1.3rem;border-bottom:1px solid rgba(31,42,58,.12);}
+  .bro-step .n{font-family:var(--mono);font-weight:700;font-size:1.15rem;color:var(--gd);}
+  .bro-step p{margin:0;font-size:1.02rem;color:var(--nv);}
+  .bro-pledge{font-family:var(--serif);font-style:italic;font-size:1.3rem;line-height:1.5;color:var(--nv);max-width:32ch;}
+  .bro-scope{background:var(--nv);color:#c7cfd9;border-radius:6px;padding:2rem;}
+  .bro-scope .rlab{font-family:var(--mono);text-transform:uppercase;letter-spacing:.24em;font-size:.62rem;color:var(--gd);margin:0 0 1.4rem;}
+  .bro-scope .row{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;padding:.9rem 0;border-bottom:1px solid rgba(255,255,255,.1);}
+  .bro-scope .row:last-child{border-bottom:0;}
+  .bro-scope .k{font-family:var(--mono);text-transform:uppercase;letter-spacing:.14em;font-size:.68rem;color:#8b96a3;}
+  .bro-scope .v{font-family:var(--serif);font-size:1.45rem;color:#fff;}
+
+  /* SELECTED WORK */
+  .bro-work .grid{display:grid;grid-template-columns:1.4fr 1fr;gap:1.2rem;margin-top:.6rem;}
+  .bro-work .col2{display:grid;gap:1.2rem;}
+  .bro-card{position:relative;border-radius:6px;overflow:hidden;display:block;}
+  .bro-card.big{aspect-ratio:1/1.02;} .bro-card.sm{aspect-ratio:4/3.2;}
+  .bro-card img{width:100%;height:100%;object-fit:cover;display:block;transition:transform .5s;}
+  .bro-card:hover img{transform:scale(1.04);}
+  .bro-card .cap{position:absolute;left:0;right:0;bottom:0;padding:1.1rem 1.2rem;
+    background:linear-gradient(transparent,rgba(15,21,30,.82));}
+  .bro-card .cap h4{font-family:var(--serif);font-weight:600;color:#fff;font-size:1.25rem;margin:0;}
+  .bro-card .cap span{font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.58rem;color:var(--gdl);}
+  .bro-work .foot{margin-top:1.8rem;display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;
+    font-family:var(--mono);text-transform:uppercase;letter-spacing:.2em;font-size:.6rem;color:#8b96a3;}
+  .bro-work .foot a{color:var(--gdl);text-decoration:none;}
+
+  /* TESTIMONIALS */
+  .bro-stars{color:var(--gd);letter-spacing:.3em;font-size:1.1rem;margin:.2rem 0 2rem;}
+  .bro-quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:2rem;}
+  .bro-quote p{font-family:var(--serif);font-style:italic;font-size:1.12rem;line-height:1.5;color:var(--nv);margin:0 0 1rem;}
+  .bro-quote .who{font-family:var(--mono);text-transform:uppercase;letter-spacing:.16em;font-size:.62rem;color:var(--gd);}
+
+  /* CTA */
+  .bro-cta{background:var(--nv);color:#c7cfd9;text-align:center;}
+  .bro-cta h2{color:#fff;}
+  .bro-cta .tag{font-family:var(--serif);font-style:italic;color:var(--gdl);font-size:1.3rem;margin:.2rem 0 1.8rem;}
+  .bro-cta .cta{display:flex;gap:1rem;justify-content:center;align-items:center;flex-wrap:wrap;}
+  .bro-cta .call{font-family:var(--mono);letter-spacing:.08em;color:#c7cfd9;text-decoration:none;font-size:.9rem;}
+  .bro-cta .call b{color:#fff;}
+
+  @media(max-width:860px){
+    .bro-hero .grid,.bro-why .grid,.bro-incl .grid,.bro-how .grid,.bro-work .grid,.bro-quotes{grid-template-columns:1fr;}
+    .bro-hero .media{order:-1;}
+    .bro-incl .media{order:-1;}
+  }
+  </style>
 </head>
 <body data-page="service">
   <noscript><iframe src="https://www.googletagmanager.com/ns.html?id=GTM-NJXQKZ6K" height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
@@ -49,62 +550,153 @@
     </div>
   </nav>
 
-    <section class="svc-hero-split">
-    <div class="svc-hero-text">
-      <p class="section-label">SERVICE</p>
-      <h1>Custom Homes</h1>
-      <p class="svc-hero-tag">Your home, designed twice - then built once.</p>
-      <div class="svc-page-actions"><a href="contact.html" class="btn btn-primary">Discuss Your Project</a><a href="projects.html" class="btn btn-outline">View Our Work</a></div>
-    </div>
-    <div class="svc-hero-media"><picture><source srcset="assets/images/services/custom-homes-hero.webp" type="image/webp"><img src="assets/images/services/custom-homes-hero.jpg" alt="Custom Homes - UniqHaus Bay Area design-build" loading="eager" /></picture></div>
-  </section>
+  <main class="bro">
 
-  <section class="svc-page-body">
-    <div class="container">
-      <p class="svc-page-lead svc-lead-dc">Ground-up custom homes built by one studio. We design every detail in full 3D first, itemize every material, then build - so there are no surprises between the plan you approve and the home you move into.</p>
-      <div class="svc-two">
-        <div class="svc-two-text">
-          <div class="svc-kicker">What&rsquo;s included</div>
-          <ul class="svc-check"><li>Full 2D + 3D design of the entire home</li>
-          <li>Permit-ready drawings and full agency management</li>
-          <li>Structural concrete, seismic, and liquefaction-zone expertise</li>
-          <li>Global material sourcing - from Italian marble to custom millwork</li>
-          <li>Itemized scope - every material priced line by line</li>
-          <li>Single point of contact from first sketch to final walkthrough</li></ul>
+    <!-- HERO -->
+    <section class="bro-hero">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <span class="bro-pill">GROUND-UP BUILD</span>
+            <p class="svc-label">Service</p>
+            <h1>Custom Homes</h1>
+            <p class="tag">Your home, designed twice — then built once.</p>
+            <div class="cta">
+              <a href="contact.html" class="bro-btn solid">Discuss Your Project</a>
+              <a href="projects.html" class="bro-btn ghost">View Our Work</a>
+            </div>
+          </div>
+          <div class="media"><picture><source srcset="assets/images/services/custom-homes-hero.webp" type="image/webp"><img src="assets/images/services/custom-homes-hero.jpg" alt="Custom Homes - UniqHaus Bay Area design-build" loading="eager" /></picture></div>
         </div>
-        <div class="svc-two-media"><picture><source srcset="assets/images/services/custom-homes-detail.webp" type="image/webp"><img src="assets/images/services/custom-homes-detail.jpg" alt="Custom Homes detail - UniqHaus" loading="lazy" /></picture></div>
+        <div class="bro-strip"><span>Design &middot; Build &middot; Connect</span><span>theuniqhaus.com</span></div>
       </div>
-      <div class="svc-process">
-        <div class="svc-kicker">How we work</div>
-        <div class="svc-steps"><div class="svc-step"><div class="num">01</div><p>Phase 1 design, Phase 2 build - all decisions locked before construction</p></div><div class="svc-step"><div class="num">02</div><p>The price you approve is the price you pay</p></div><div class="svc-step"><div class="num">03</div><p>Weekly photo updates and milestone reports</p></div></div>
+    </section>
+
+    <!-- WHY (shared) -->
+    <section class="bro-why light">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <p class="eyebrow">Why UniqHaus</p>
+            <h2>Design it twice.<br><em>Build it once.</em></h2>
+            <p class="lead">Most projects lose time and money in the handoffs between architect, designer, and builder. We keep all of it under one accountable team.</p>
+            <ul class="bro-check">
+              <li>One studio: architecture, interiors, permits, build</li>
+              <li>Seen in full 3D before anything is built</li>
+              <li>Itemized pricing &mdash; approve it, then it&rsquo;s fixed</li>
+            </ul>
+          </div>
+          <div class="bro-ranges">
+            <p class="rlab">Typical engagement ranges</p>
+            <div class="bro-range"><div><h4>Focused</h4><p>Interiors, kitchen &amp; bath, 3D refresh</p></div><span class="mo">3&ndash;6 mo</span></div>
+            <div class="bro-range"><div><h4>Major remodel</h4><p>Full-house remodels, ADUs &amp; additions</p></div><span class="mo">6&ndash;12 mo</span></div>
+            <div class="bro-range"><div><h4>Custom home</h4><p>Ground-up new builds, design-led</p></div><span class="mo">12&ndash;24 mo</span></div>
+            <div class="bro-recent">
+              <p class="rlab">Recent work</p>
+              <p>Castro Court &middot; Hawthorne Ave &middot; Angelica Way &middot; Frostwood &middot; NCM Cafe &middot; Willow Glen</p>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="svc-spec"><span>Timeline: 12-18 months (design 2-4, build 10-14)</span><span>Investment: $250-$500+/sq ft</span></div>
-      <div class="svc-faq"><h2>Frequently asked questions</h2>
-        <details><summary>How much does Custom Homes cost, and how long does it take?</summary><p>Timeline: 12-18 months (design 2-4, build 10-14); Investment: $250-$500+/sq ft. You get exact, itemized pricing during the design phase &mdash; before any commitment.</p></details>
-        <details><summary>Do you handle design, 3D, and permits too?</summary><p>Yes. UniqHaus is one studio handling architecture, interior design, 3D visualization, permitting, and construction &mdash; so design intent, budget, and permits never get lost in a handoff.</p></details>
-        <details><summary>Which Bay Area cities do you serve?</summary><p>We work across the Bay Area including San Jose, Palo Alto, Los Gatos, Saratoga, Sunnyvale, Cupertino, Mountain View, Campbell, Los Altos, Menlo Park and 60+ surrounding communities.</p></details></div>
-    </div>
-  </section>
+    </section>
 
-  <section class="svc-page-related">
-    <div class="container">
-      <h2>Explore other services</h2>
-      <div class="chip-links"><a href="service-architecture.html">Architecture</a><a href="service-permitting.html">Permitting</a><a href="service-2d-design.html">2D Design</a><a href="service-3d-visualization.html">3D Visualization</a><a href="service-home-remodeling.html">Home Remodeling</a><a href="service-home-additions.html">Home Additions</a><a href="service-kitchen-remodeling.html">Kitchen Remodeling</a><a href="service-bathroom-remodeling.html">Bathroom Remodeling</a><a href="service-adus.html">ADUs</a><a href="service-garage-conversions.html">Garage Conversions</a><a href="service-commercial-buildout.html">Commercial Buildout</a><a href="service-hotel-ffe.html">Hotel FFE</a><a href="service-seismic-retrofitting.html">Seismic Retrofitting</a><a href="service-termite-damage-repair.html">Termite Damage Repair</a><a href="services.html">All services</a></div>
-      <h2 style="margin-top:2.4rem">Available across the Bay Area</h2>
-      <div class="chip-links"><a href="location-san-jose.html">San Jose</a><a href="location-palo-alto.html">Palo Alto</a><a href="location-los-gatos.html">Los Gatos</a><a href="location-saratoga.html">Saratoga</a><a href="location-sunnyvale.html">Sunnyvale</a><a href="location-cupertino.html">Cupertino</a><a href="location-mountain-view.html">Mountain View</a><a href="location-campbell.html">Campbell</a><a href="location-los-altos.html">Los Altos</a><a href="location-menlo-park.html">Menlo Park</a><a href="locations.html">All service areas</a></div>
-    </div>
-  </section>
+    <!-- WHAT'S INCLUDED -->
+    <section class="bro-incl dark">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <p class="eyebrow">What&rsquo;s included</p>
+            <h2>Custom Homes</h2>
+            <p class="lead" style="color:#aeb7c2">Ground-up homes designed in full 3D and itemized to the line. No surprises between the plan and move-in.</p>
+            <ul class="bro-diamond">
+              <li>Full 2D + 3D design of the whole home</li>
+              <li>Permit-ready drawings &amp; agency management</li>
+              <li>Structural, seismic &amp; liquefaction work</li>
+              <li>Global sourcing — marble to millwork</li>
+            </ul>
+          </div>
+          <div class="media"><picture><source srcset="assets/images/services/custom-homes-detail.webp" type="image/webp"><img src="assets/images/services/custom-homes-detail.jpg" alt="Custom Homes detail - UniqHaus" loading="lazy" /></picture></div>
+        </div>
+      </div>
+    </section>
 
-  <section class="svc-page-cta">
-    <div class="container">
-      <p class="section-label" style="color:var(--gold)">START YOUR PROJECT</p>
-      <h2>Ready to plan your Custom Homes project?</h2>
-      <p>Tell us your scope, timeline, and goals &mdash; we&rsquo;ll point you toward the right next step.</p>
-      <a href="contact.html" class="btn btn-primary">Discuss Your Project</a>
-    </div>
-  </section>
+    <!-- HOW WE WORK -->
+    <section class="bro-how light">
+      <div class="wrap">
+        <div class="grid">
+          <div>
+            <p class="eyebrow">How we work</p>
+            <h2>Predictable by design.</h2>
+            <div class="bro-steps">
+              <div class="bro-step"><span class="n">01</span><p>Every decision locked before construction</p></div>
+              <div class="bro-step"><span class="n">02</span><p>The price you approve is what you pay</p></div>
+              <div class="bro-step"><span class="n">03</span><p>Weekly photos &amp; milestone reports</p></div>
+            </div>
+            <p class="bro-pledge">No change orders. No surprises. One team, from first sketch to final walkthrough.</p>
+          </div>
+          <div class="bro-scope">
+            <p class="rlab">Scope &amp; Investment</p>
+            <div class="row"><span class="k">Phase</span><span class="v">Timeline: 12–18 mo (Design: 2–4 mo)</span></div>
+            <div class="row"><span class="k">Output</span><span class="v">Investment: $250–500+/sf</span></div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<footer id="footer">
+    <!-- SELECTED WORK (shared) -->
+    <section class="bro-work dark">
+      <div class="wrap">
+        <p class="eyebrow">Selected work</p>
+        <h2>Proof, in built form.</h2>
+        <div class="grid">
+          <a class="bro-card big" href="projects.html">
+            <img src="assets/images/portfolio/frostwood/finished-livingroom-01.jpg" alt="Frostwood living area" loading="lazy" />
+            <div class="cap"><h4>Frostwood</h4><span>Living Area</span></div>
+          </a>
+          <div class="col2">
+            <a class="bro-card sm" href="projects.html">
+              <img src="assets/images/portfolio/hawthorneave-finished-kitchen-01.jpg" alt="Hawthorne Ave kitchen" loading="lazy" />
+              <div class="cap"><h4>Hawthorne Ave</h4><span>Kitchen</span></div>
+            </a>
+            <a class="bro-card sm" href="projects.html">
+              <img src="assets/images/portfolio/frostwood/finished-kitchen-01.jpg" alt="Frostwood kitchen" loading="lazy" />
+              <div class="cap"><h4>Frostwood</h4><span>Kitchen</span></div>
+            </a>
+          </div>
+        </div>
+        <div class="foot"><span>Recent Bay Area projects</span><a href="projects.html">theuniqhaus.com/portfolio</a></div>
+      </div>
+    </section>
+
+    <!-- TESTIMONIALS (shared) -->
+    <section class="bro-test light">
+      <div class="wrap">
+        <p class="eyebrow">What homeowners say</p>
+        <div class="bro-stars">&#9733; &#9733; &#9733; &#9733; &#9733;</div>
+        <div class="bro-quotes">
+          <div class="bro-quote"><p>&ldquo;Working with UniqHaus was easy and painless. I built my dream home in a reasonable time frame &mdash; the project came out way better than expected.&rdquo;</p><span class="who">Lauren &mdash; Los Gatos</span></div>
+          <div class="bro-quote"><p>&ldquo;Working with the UniqHaus team was the best decision I could have made. The job was completed on time and within budget.&rdquo;</p><span class="who">Marcus &mdash; San Jose</span></div>
+          <div class="bro-quote"><p>&ldquo;My family worked with UniqHaus on a complete rebuild. With the team&rsquo;s help, we were able to turn a huge profit.&rdquo;</p><span class="who">Kevin &mdash; Willow Glen</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CTA -->
+    <section class="bro-cta">
+      <div class="wrap">
+        <p class="eyebrow" style="text-align:center">Free consultation</p>
+        <h2>Ready to start your project?</h2>
+        <p class="tag">Your home, designed twice — then built once.</p>
+        <div class="cta">
+          <a href="contact.html" class="bro-btn solid">Discuss Your Project</a>
+          <a href="tel:+16508665665" class="call">or call <b>650-866-5665</b></a>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer id="footer">
     <div class="container footer-grid">
       <div class="footer-brand"><div class="footer-logo"><img src="assets/images/logos/logo-uniqhaus-official.png" class="site-logo site-logo--footer" alt="UniqHaus Design and Build" loading="lazy" /></div><p class="footer-tagline">design | build | connect</p><p class="footer-desc">A Bay Area design-build studio for remodels, additions, custom homes, interior design, permitting, and construction planning.</p></div>
       <div class="footer-col"><h5>Services</h5><ul><li><a href="service-custom-homes.html">Custom Homes</a></li><li><a href="service-home-remodeling.html">Home Remodeling</a></li><li><a href="service-home-additions.html">Home Additions</a></li><li><a href="service-adus.html">ADUs</a></li><li><a href="service-kitchen-remodeling.html">Kitchen Remodeling</a></li><li><a href="services.html">All Services</a></li></ul></div>
@@ -119,6 +711,6 @@
     </div>
   </footer>
 
-  <script src="script.20260706091032.js"></script>
+  <script src="script.20260706104143.js"></script>
 </body>
 </html>
