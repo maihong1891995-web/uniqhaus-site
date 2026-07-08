@@ -2387,7 +2387,7 @@ body[data-page="process"] .page-hero-copy h1 {
 .board-slot-17 { grid-column: 1; grid-row: 4; }
 .board-slot-18 { grid-column: 1; grid-row: 3; }
 .board-slot-19 { grid-column: 1; grid-row: 2; }
-.projects-grid--board .board-slot--cta{height:100%;min-height:12rem;aspect-ratio:4/3;border-radius:18px;overflow:hidden;background:#1f2a3a;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;text-align:center;transition:background .3s;}
+.projects-grid--board .board-slot--cta{overflow:hidden;background:#1f2a3a;color:#fff;text-decoration:none;display:flex;align-items:center;justify-content:center;text-align:center;transition:background .3s;}
 .projects-grid--board .board-slot--cta:hover{background:#26364a;}
 .board-slot--cta .board-cta-inner{display:flex;flex-direction:column;gap:.4rem;padding:1.1rem;}
 .board-slot--cta .board-cta-label{font-family:'Montserrat',sans-serif;text-transform:uppercase;letter-spacing:.22em;font-size:.58rem;color:#b8943f;}
