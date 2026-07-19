@@ -2544,20 +2544,3 @@ if (svcModal) {
   imgs.forEach(function(im){ if (im.complete) done(); else { im.addEventListener('load', done); im.addEventListener('error', done); } });
   measure(); apply();
 })();
-
-// --- Conversion event tracking (dataLayer -> GTM/GA4) ---
-(function(){
-  window.dataLayer = window.dataLayer || [];
-  function fire(name, url){
-    window.dataLayer.push({ event: name, link_url: url || '' });
-    if (typeof window.gtag === 'function') { window.gtag('event', name, { link_url: url || '' }); }
-  }
-  document.addEventListener('click', function(e){
-    var a = e.target && e.target.closest ? e.target.closest('a') : null;
-    if (!a) return;
-    var href = a.getAttribute('href') || '';
-    if (href.indexOf('tel:') === 0) fire('phone_click', href);
-    else if (href.indexOf('mailto:') === 0) fire('email_click', href);
-    else if (href === 'contact.html' || href.indexOf('/contact.html') === 0 || href.indexOf('contact.html') === 0) fire('contact_click', href);
-  }, true);
-})();
