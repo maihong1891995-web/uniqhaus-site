@@ -3913,6 +3913,17 @@ cite {
   #service-scope .section-desc { white-space: normal; }
 }
 
+/* Mobile hero: serve a small dedicated image and skip the video entirely
+   (matches the JS boundary of min-width:768px so the video never loads here) */
+@media (max-width: 767px) {
+  #hero {
+    background-image:
+      linear-gradient(to bottom, rgba(20,28,44,0.66) 0%, rgba(20,28,44,0.54) 100%),
+      url('assets/images/hero-poster-mobile.jpg');
+  }
+  .hero-bg-video { display: none; }
+}
+
 @media (max-width: 768px) {
   body {
     padding-bottom: calc(6.5rem + env(safe-area-inset-bottom));
