@@ -2398,22 +2398,6 @@ if (svcModal) {
       included: ['Global sourcing from international and domestic suppliers', 'End-to-end procurement coordination', 'Per-room furnishings - beds, desks, lighting, bath fixtures', 'On-site quality inspection before shipping', 'Professional installation by our team'],
       points: ['Every shipment inspected before installation', 'Buffer time built into every shipping schedule', 'Works with hotel chains and independent boutiques'],
       meta: ['Per room: $5K-$25K+', 'Sourced globally']
-    },
-    'seismic-retrofitting': {
-      title: 'Seismic Retrofitting', tagline: 'Anchor your home against the next quake.',
-      hero: 'assets/images/portfolio/curtiss/back11.jpg',
-      overview: 'Strengthen the connection between your home and its foundation so the structure can resist lateral shaking - especially for Bay Area homes built before 1980.',
-      included: ['Foundation bolting - mudsill to foundation', 'Cripple-wall bracing with structural plywood', 'Soft-story retrofitting with steel moment frames', 'Chimney bracing for masonry chimneys', 'Water-heater strapping to code'],
-      points: ['Engineering, permitting, and inspections handled throughout', 'May qualify for California Earthquake Authority insurance discounts', 'Free assessment of your home vulnerabilities'],
-      meta: ['Standard work: 3-5 days', 'With permitting: 2-6 months', 'From $3K-$7K+']
-    },
-    'termite-damage-repair': {
-      title: 'Termite Damage Repair', tagline: 'Restore structural integrity after the clearance.',
-      hero: 'assets/images/portfolio/hawthorneAve/hero.jpg',
-      overview: 'Once a licensed pest-control company clears the infestation, we assess and repair all structural damage - from sill plates to subfloors - and restore finishes.',
-      included: ['Wood-member replacement (studs, joists, beams, sill plates)', 'Subfloor repair and replacement', 'Framing and wall restoration', 'Drywall, insulation, and finish work', 'Code-compliance upgrades'],
-      points: ['We assess from the pest report, then scope and quote', 'All work inspected before walls close', 'Detailed invoices provided for insurance claims'],
-      meta: ['Minor repairs: 2-5 days', 'Extensive: 2-4 weeks', 'Estimate within 48 hours']
     }
   };
 
