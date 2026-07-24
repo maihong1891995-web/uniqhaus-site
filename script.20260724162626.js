@@ -2398,22 +2398,6 @@ if (svcModal) {
       included: ['Global sourcing from international and domestic suppliers', 'End-to-end procurement coordination', 'Per-room furnishings - beds, desks, lighting, bath fixtures', 'On-site quality inspection before shipping', 'Professional installation by our team'],
       points: ['Every shipment inspected before installation', 'Buffer time built into every shipping schedule', 'Works with hotel chains and independent boutiques'],
       meta: ['Per room: $5K-$25K+', 'Sourced globally']
-    },
-    'seismic-retrofitting': {
-      title: 'Seismic Retrofitting', tagline: 'Anchor your home against the next quake.',
-      hero: 'assets/images/portfolio/curtiss/back11.jpg',
-      overview: 'Strengthen the connection between your home and its foundation so the structure can resist lateral shaking - especially for Bay Area homes built before 1980.',
-      included: ['Foundation bolting - mudsill to foundation', 'Cripple-wall bracing with structural plywood', 'Soft-story retrofitting with steel moment frames', 'Chimney bracing for masonry chimneys', 'Water-heater strapping to code'],
-      points: ['Engineering, permitting, and inspections handled throughout', 'May qualify for California Earthquake Authority insurance discounts', 'Free assessment of your home vulnerabilities'],
-      meta: ['Standard work: 3-5 days', 'With permitting: 2-6 months', 'From $3K-$7K+']
-    },
-    'termite-damage-repair': {
-      title: 'Termite Damage Repair', tagline: 'Restore structural integrity after the clearance.',
-      hero: 'assets/images/portfolio/hawthorneAve/hero.jpg',
-      overview: 'Once a licensed pest-control company clears the infestation, we assess and repair all structural damage - from sill plates to subfloors - and restore finishes.',
-      included: ['Wood-member replacement (studs, joists, beams, sill plates)', 'Subfloor repair and replacement', 'Framing and wall restoration', 'Drywall, insulation, and finish work', 'Code-compliance upgrades'],
-      points: ['We assess from the pest report, then scope and quote', 'All work inspected before walls close', 'Detailed invoices provided for insurance claims'],
-      meta: ['Minor repairs: 2-5 days', 'Extensive: 2-4 weeks', 'Estimate within 48 hours']
     }
   };
 
@@ -2543,4 +2527,80 @@ if (svcModal) {
   function done(){ if (--left <= 0){ measure(); apply(); } }
   imgs.forEach(function(im){ if (im.complete) done(); else { im.addEventListener('load', done); im.addEventListener('error', done); } });
   measure(); apply();
+})();
+
+// ─── VIOLA SOFA GIVEAWAY POPUP (Brevo-backed lead capture) ──────────────────
+(function(){
+  var BREVO_ACTION = 'https://c4e61cd7.sibforms.com/serve/MUIFANJl119bcJUgZbCZEC1XPhN99iLr3kNrm34lB8LIgahLlRkWEd1TUaNkLrC_0eRrWo2qAlZv-Grqlfsc-7b8YOQOB1bH1IQjrLAp8xlQjeqpuBn0LVMBvM4dxPTohLxRNZiG1sIdZPRGew7l90cCcBY2E-cjxeLU-TryTLUx1O6VgI6p-DTggg6H1rF0o-Ch8Wu7e_WeO02Izg==';
+  var WEB3FORMS_KEY = '236c6650-bfc3-4fec-bc28-acfe81be012a';  // emails each entry to info@theuniqhaus.com
+  var STORAGE_KEY = 'uh_viola_popup';
+  var SHOW_DELAY = 6000;   // ms after load before the popup appears
+  var REMIND_DAYS = 7;     // if closed without entering, wait this long before showing again
+
+  if (/giveaway-terms/i.test(location.pathname)) return;         // don't cover the rules page
+  var saved = localStorage.getItem(STORAGE_KEY);
+  if (saved === 'entered') return;
+  if (saved) { var ts = parseInt(saved, 10); if (!isNaN(ts) && (Date.now() - ts) < REMIND_DAYS * 864e5) return; }
+
+  function dl(ev){ window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: ev }); }
+
+  var ov = document.createElement('div');
+  ov.className = 'uhg-overlay';
+  ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Viola sofa giveaway');
+  ov.innerHTML =
+    '<div class="uhg-card">' +
+      '<button class="uhg-close" aria-label="Close">&times;</button>' +
+      '<div class="uhg-body">' +
+        '<p class="uhg-label">UniqHaus Giveaway</p>' +
+        '<h3>Win a Free Viola Sofa</h3>' +
+        '<p class="uhg-value">$3,197 Value</p>' +
+        '<p class="uhg-draw">New winner drawn every month &bull; while supplies last</p>' +
+        '<form class="uhg-form" novalidate>' +
+          '<input class="uhg-field" type="text" name="name" placeholder="Full name" autocomplete="name" required />' +
+          '<input class="uhg-field" type="email" name="email" placeholder="Email address" autocomplete="email" required />' +
+          '<button class="uhg-btn" type="submit">Enter to Win</button>' +
+          '<p class="uhg-msg" aria-live="polite"></p>' +
+        '</form>' +
+        '<p class="uhg-fine">No purchase necessary. By entering you agree to receive UniqHaus emails &mdash; unsubscribe anytime. <a href="giveaway-terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>' +
+      '</div>' +
+    '</div>';
+
+  var card = ov.querySelector('.uhg-card');
+
+  function open(){ document.body.appendChild(ov); requestAnimationFrame(function(){ ov.classList.add('uhg-open'); }); dl('popup_view'); document.addEventListener('keydown', onKey); }
+  function dismiss(reason){ ov.classList.remove('uhg-open'); localStorage.setItem(STORAGE_KEY, reason === 'entered' ? 'entered' : String(Date.now())); document.removeEventListener('keydown', onKey); setTimeout(function(){ if (ov.parentNode) ov.parentNode.removeChild(ov); }, 400); }
+  function onKey(e){ if (e.key === 'Escape') { dl('popup_close'); dismiss('closed'); } }
+
+  ov.addEventListener('click', function(e){ if (e.target === ov) { dl('popup_close'); dismiss('closed'); } });
+  ov.querySelector('.uhg-close').addEventListener('click', function(){ dl('popup_close'); dismiss('closed'); });
+
+  ov.querySelector('.uhg-form').addEventListener('submit', function(e){
+    e.preventDefault();
+    var f = e.target, name = f.name.value.trim(), email = f.email.value.trim();
+    var msg = f.querySelector('.uhg-msg'), btn = f.querySelector('.uhg-btn');
+    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Please enter your name and a valid email.'; return; }
+    btn.disabled = true; msg.textContent = 'Entering…';
+    // notify the UniqHaus inbox (best-effort, non-blocking) via Web3Forms
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject: 'New Viola Sofa giveaway entry', from_name: 'UniqHaus Giveaway', name: name, email: email }) }).catch(function(){});
+    var body = new URLSearchParams();
+    body.append('EMAIL', email);
+    body.append('FIRSTNAME', name);
+    body.append('email_address_check', '');  // Brevo honeypot — must stay empty
+    body.append('locale', 'en');
+    fetch(BREVO_ACTION, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
+      .then(function(){
+        dl('popup_signup');
+        var safe = name.replace(/[<>]/g, '');
+        card.querySelector('.uhg-body').innerHTML =
+          '<p class="uhg-label">You\'re In!</p>' +
+          '<h3>Entry Received</h3>' +
+          '<p class="uhg-draw" style="font-size:.9rem;line-height:1.6;margin-top:.6rem">Thanks, ' + safe + '! You\'re in this month\'s draw for a free Viola sofa. We\'ve emailed your confirmation &mdash; we draw a new winner every month while supplies last.</p>';
+        localStorage.setItem(STORAGE_KEY, 'entered');
+        setTimeout(function(){ dismiss('entered'); }, 5000);
+      })
+      .catch(function(){ btn.disabled = false; msg.textContent = 'Something went wrong. Please try again.'; });
+  });
+
+  if (document.readyState === 'complete') setTimeout(open, SHOW_DELAY);
+  else window.addEventListener('load', function(){ setTimeout(open, SHOW_DELAY); });
 })();
