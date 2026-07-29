@@ -2534,7 +2534,7 @@ if (svcModal) {
   var BREVO_ACTION = 'https://c4e61cd7.sibforms.com/serve/MUIFANJl119bcJUgZbCZEC1XPhN99iLr3kNrm34lB8LIgahLlRkWEd1TUaNkLrC_0eRrWo2qAlZv-Grqlfsc-7b8YOQOB1bH1IQjrLAp8xlQjeqpuBn0LVMBvM4dxPTohLxRNZiG1sIdZPRGew7l90cCcBY2E-cjxeLU-TryTLUx1O6VgI6p-DTggg6H1rF0o-Ch8Wu7e_WeO02Izg==';
   var WEB3FORMS_KEY = '236c6650-bfc3-4fec-bc28-acfe81be012a';  // emails each entry to info@theuniqhaus.com
   var STORAGE_KEY = 'uh_viola_popup';
-  var SHOW_DELAY = 6000;   // ms after load before the popup appears
+  var SHOW_DELAY = 1000;   // ms after load before the popup appears
   var REMIND_DAYS = 7;     // if closed without entering, wait this long before showing again
 
   if (/giveaway-terms/i.test(location.pathname)) return;         // don't cover the rules page
