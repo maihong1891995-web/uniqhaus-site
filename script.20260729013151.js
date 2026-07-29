@@ -2532,8 +2532,9 @@ if (svcModal) {
 // ─── VIOLA SOFA GIVEAWAY POPUP (Brevo-backed lead capture) ──────────────────
 (function(){
   var BREVO_ACTION = 'https://c4e61cd7.sibforms.com/serve/MUIFANJl119bcJUgZbCZEC1XPhN99iLr3kNrm34lB8LIgahLlRkWEd1TUaNkLrC_0eRrWo2qAlZv-Grqlfsc-7b8YOQOB1bH1IQjrLAp8xlQjeqpuBn0LVMBvM4dxPTohLxRNZiG1sIdZPRGew7l90cCcBY2E-cjxeLU-TryTLUx1O6VgI6p-DTggg6H1rF0o-Ch8Wu7e_WeO02Izg==';
+  var WEB3FORMS_KEY = '236c6650-bfc3-4fec-bc28-acfe81be012a';  // emails each entry to info@theuniqhaus.com
   var STORAGE_KEY = 'uh_viola_popup';
-  var SHOW_DELAY = 6000;   // ms after load before the popup appears
+  var SHOW_DELAY = 1000;   // ms after load before the popup appears
   var REMIND_DAYS = 7;     // if closed without entering, wait this long before showing again
 
   if (/giveaway-terms/i.test(location.pathname)) return;         // don't cover the rules page
@@ -2579,6 +2580,8 @@ if (svcModal) {
     var msg = f.querySelector('.uhg-msg'), btn = f.querySelector('.uhg-btn');
     if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Please enter your name and a valid email.'; return; }
     btn.disabled = true; msg.textContent = 'Entering…';
+    // notify the UniqHaus inbox (best-effort, non-blocking) via Web3Forms
+    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject: 'New Viola Sofa giveaway entry', from_name: 'UniqHaus Giveaway', name: name, email: email }) }).catch(function(){});
     var body = new URLSearchParams();
     body.append('EMAIL', email);
     body.append('FIRSTNAME', name);
