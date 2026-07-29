@@ -3766,6 +3766,10 @@ cite {
 }
 .social-links a svg { width: 15px; height: 15px; }
 .social-links a:hover { border-color: var(--gold); color: var(--gold); }
+/* Social icons in the dark footer */
+#footer .social-links { margin-top: 1.25rem; }
+#footer .social-links a { color: rgba(245,240,232,0.72); border-color: rgba(245,240,232,0.25); }
+#footer .social-links a:hover { color: var(--gold); border-color: var(--gold); }
 
 .footer-col h5 {
   font-family: var(--font-sans);
