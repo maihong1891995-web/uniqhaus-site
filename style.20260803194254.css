@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   UniqHaus — Bay Area Design-Build Studio
+   UniqHaus - Bay Area Design-Build Studio
    Style Sheet
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -4165,7 +4165,7 @@ body[data-page="about"] .page-hero-copy h1 {
 .page-hero-copy p:not(.section-label):not(.page-hero-note) { display: none; }
 
 /* Inner-page hero removed visually, but kept in the DOM for SEO + screen readers
-   via the standard visually-hidden (sr-only) technique — NOT display:none, so the
+   via the standard visually-hidden (sr-only) technique - NOT display:none, so the
    <h1> still carries full ranking weight while staying invisible on screen. */
 body:not([data-page="home"]) { padding-top: 6.5rem; }
 .page-hero {
@@ -4714,7 +4714,7 @@ body[data-page="projects"] .svc-page-body { text-align: center; }
 body[data-page="projects"] .svc-page-body .svc-modal-meta { justify-content: center; }
 body[data-page="projects"] .svc-page-body .svc-page-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
-/* ─── SERVICE PAGE — Option A editorial ────────────────────────────────────── */
+/* ─── SERVICE PAGE - Option A editorial ────────────────────────────────────── */
 .svc-hero-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 74vh; }
 .svc-hero-text { background: var(--dark); color: #fff; display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem,5vw,5rem); padding-top: max(clamp(2rem,5vw,5rem), 110px); }
 .svc-hero-text .section-label { color: var(--gold); }
@@ -4745,7 +4745,7 @@ body[data-page="projects"] .svc-page-body .svc-page-actions { display: flex; jus
   .svc-steps { grid-template-columns: 1fr; }
 }
 
-/* <picture> wrapper must not affect flex/grid layout — img stays the layout box */
+/* <picture> wrapper must not affect flex/grid layout - img stays the layout box */
 picture { display: contents; }
 
 /* ── Viola Sofa Giveaway popup ─────────────────────────────────────── */
