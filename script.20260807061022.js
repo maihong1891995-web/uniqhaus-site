@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   UniqHaus — JavaScript
+   UniqHaus - JavaScript
    ═══════════════════════════════════════════════════════════════════════════ */
 
 'use strict';
@@ -8,7 +8,7 @@ const analyticsPage = document.body?.dataset.page || 'unknown';
 const trackedScrollMilestones = new Set();
 
 /* ─── FORM ENDPOINT CONFIG (Web3Forms) ──────────────────────────────────────
-   Get a FREE access key at https://web3forms.com — enter info@theuniqhaus.com,
+   Get a FREE access key at https://web3forms.com - enter info@theuniqhaus.com,
    confirm the email, then paste the key below. Leads will be emailed there.
    IMPORTANT: until a real key is set, forms run in PREVIEW-ONLY mode and the
    submission is NOT delivered (a warning is logged to the console).            */
@@ -858,7 +858,7 @@ if (contactForm) {
     submitBtn.disabled = true;
 
     const ok = await submitToWeb3Forms(contactForm, {
-      subject: 'New Contact Inquiry — UniqHaus Website',
+      subject: 'New Contact Inquiry - UniqHaus Website',
     });
 
     if (ok) {
@@ -871,7 +871,7 @@ if (contactForm) {
       submitBtn.style.background = '#4caf50';
       contactForm.reset();
     } else {
-      submitBtn.textContent = 'Could not send — please call us';
+      submitBtn.textContent = 'Could not send - please call us';
       submitBtn.style.background = '#c0392b';
     }
 
@@ -897,7 +897,7 @@ if (checklistForm) {
     submitBtn.disabled = true;
 
     const ok = await submitToWeb3Forms(checklistForm, {
-      subject: 'New Checklist Request — UniqHaus Website',
+      subject: 'New Checklist Request - UniqHaus Website',
     });
 
     if (ok) {
@@ -1856,7 +1856,7 @@ if (projectModal) {
     currentGalleryImages = detail.gallery.slice();
 
     modalGallery.innerHTML = detail.gallery
-      .map((image, index) => `<button type="button" class="project-gallery-item" data-gallery-index="${index}" style="background-image:url('${image}')" aria-label="${detail.title}, ${detail.location} — open image ${index + 1}"></button>`)
+      .map((image, index) => `<button type="button" class="project-gallery-item" data-gallery-index="${index}" style="background-image:url('${image}')" aria-label="${detail.title}, ${detail.location} - open image ${index + 1}"></button>`)
       .join('');
 
     trackEvent('view_project_modal', {
@@ -1881,7 +1881,7 @@ if (projectModal) {
     if (!projectLightboxImage || !projectLightboxCount || !currentGalleryImages.length) return;
     projectLightboxImage.src = currentGalleryImages[currentGalleryIndex];
     const ld = projectDetails[currentProjectId];
-    projectLightboxImage.alt = ld ? `${ld.title}, ${ld.location} — photo ${currentGalleryIndex + 1}` : '';
+    projectLightboxImage.alt = ld ? `${ld.title}, ${ld.location} - photo ${currentGalleryIndex + 1}` : '';
     projectLightboxCount.textContent = `${currentGalleryIndex + 1} / ${currentGalleryImages.length}`;
   };
 
@@ -2561,7 +2561,7 @@ if (svcModal) {
           '<button class="uhg-btn" type="submit">Enter to Win</button>' +
           '<p class="uhg-msg" aria-live="polite"></p>' +
         '</form>' +
-        '<p class="uhg-fine">No purchase necessary. By entering you agree to receive UniqHaus emails &mdash; unsubscribe anytime. <a href="giveaway-terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>' +
+        '<p class="uhg-fine">No purchase necessary. By entering you agree to receive UniqHaus emails - unsubscribe anytime. <a href="giveaway-terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>' +
       '</div>' +
     '</div>';
 
@@ -2585,7 +2585,7 @@ if (svcModal) {
     var body = new URLSearchParams();
     body.append('EMAIL', email);
     body.append('FIRSTNAME', name);
-    body.append('email_address_check', '');  // Brevo honeypot — must stay empty
+    body.append('email_address_check', '');  // Brevo honeypot - must stay empty
     body.append('locale', 'en');
     fetch(BREVO_ACTION, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
       .then(function(){
@@ -2594,7 +2594,7 @@ if (svcModal) {
         card.querySelector('.uhg-body').innerHTML =
           '<p class="uhg-label">You\'re In!</p>' +
           '<h3>Entry Received</h3>' +
-          '<p class="uhg-draw" style="font-size:.9rem;line-height:1.6;margin-top:.6rem">Thanks, ' + safe + '! You\'re in this month\'s draw for a free Viola sofa. We\'ve emailed your confirmation &mdash; we draw a new winner every month while supplies last.</p>';
+          '<p class="uhg-draw" style="font-size:.9rem;line-height:1.6;margin-top:.6rem">Thanks, ' + safe + '! You\'re in this month\'s draw for a free Viola sofa. We\'ve emailed your confirmation - we draw a new winner every month while supplies last.</p>';
         localStorage.setItem(STORAGE_KEY, 'entered');
         setTimeout(function(){ dismiss('entered'); }, 5000);
       })

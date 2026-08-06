@@ -1,5 +1,5 @@
 /* ═══════════════════════════════════════════════════════════════════════════
-   UniqHaus — Bay Area Design-Build Studio
+   UniqHaus - Bay Area Design-Build Studio
    Style Sheet
    ═══════════════════════════════════════════════════════════════════════════ */
 
@@ -4165,7 +4165,7 @@ body[data-page="about"] .page-hero-copy h1 {
 .page-hero-copy p:not(.section-label):not(.page-hero-note) { display: none; }
 
 /* Inner-page hero removed visually, but kept in the DOM for SEO + screen readers
-   via the standard visually-hidden (sr-only) technique — NOT display:none, so the
+   via the standard visually-hidden (sr-only) technique - NOT display:none, so the
    <h1> still carries full ranking weight while staying invisible on screen. */
 body:not([data-page="home"]) { padding-top: 6.5rem; }
 .page-hero {
@@ -4714,7 +4714,7 @@ body[data-page="projects"] .svc-page-body { text-align: center; }
 body[data-page="projects"] .svc-page-body .svc-modal-meta { justify-content: center; }
 body[data-page="projects"] .svc-page-body .svc-page-actions { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
 
-/* ─── SERVICE PAGE — Option A editorial ────────────────────────────────────── */
+/* ─── SERVICE PAGE - Option A editorial ────────────────────────────────────── */
 .svc-hero-split { display: grid; grid-template-columns: 1fr 1fr; min-height: 74vh; }
 .svc-hero-text { background: var(--dark); color: #fff; display: flex; flex-direction: column; justify-content: center; padding: clamp(2rem,5vw,5rem); padding-top: max(clamp(2rem,5vw,5rem), 110px); }
 .svc-hero-text .section-label { color: var(--gold); }
@@ -4745,7 +4745,7 @@ body[data-page="projects"] .svc-page-body .svc-page-actions { display: flex; jus
   .svc-steps { grid-template-columns: 1fr; }
 }
 
-/* <picture> wrapper must not affect flex/grid layout — img stays the layout box */
+/* <picture> wrapper must not affect flex/grid layout - img stays the layout box */
 picture { display: contents; }
 
 /* ── Viola Sofa Giveaway popup ─────────────────────────────────────── */
@@ -4772,3 +4772,19 @@ picture { display: contents; }
 .uhg-fine a{color:#ecd8a6;text-decoration:underline;}
 @media (max-width:480px){.uhg-card{min-height:610px;padding:2.2rem 1.5rem 1.4rem;}.uhg-card h3{font-size:2.15rem;}}
 @media (prefers-reduced-motion:reduce){.uhg-overlay,.uhg-card{transition:none;}}
+
+/* Company profile / presentation card (About page) */
+#company-profile { padding: 5rem 0; background: var(--cream); }
+.profile-card { display: grid; grid-template-columns: 1.05fr 1fr; gap: 2.5rem; align-items: stretch; background: #ffffff; border: 1px solid var(--border-dark); border-radius: 8px; overflow: hidden; box-shadow: 0 18px 50px rgba(20,28,44,.08); }
+.profile-cover { display: block; overflow: hidden; }
+.profile-cover img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .5s ease; }
+.profile-cover:hover img { transform: scale(1.04); }
+.profile-body { padding: 2.4rem 2.6rem 2.4rem 0.4rem; display: flex; flex-direction: column; justify-content: center; }
+.profile-body .section-desc { margin-bottom: 1.1rem; }
+.profile-meta { font-family: 'Montserrat', sans-serif; font-size: .72rem; letter-spacing: .1em; text-transform: uppercase; color: #6f6a5f; margin: 0; }
+.profile-actions { display: flex; align-items: center; gap: 1.6rem; margin-top: 1.6rem; flex-wrap: wrap; }
+@media (max-width: 768px) {
+  #company-profile { padding: 3.5rem 0; }
+  .profile-card { grid-template-columns: 1fr; }
+  .profile-body { padding: 1.6rem 1.5rem 1.8rem; }
+}
