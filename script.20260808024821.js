@@ -791,6 +791,7 @@ const revealSelectors = [
   '.checklist-wrap',
   '.event-overview-grid',
   '.event-calendar-shell',
+  '.profile-card',
 ];
 
 revealSelectors.forEach(selector => {
