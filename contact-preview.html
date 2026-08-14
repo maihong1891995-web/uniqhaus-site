@@ -3,6 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="robots" content="noindex, nofollow" />
   <link rel="icon" type="image/png" sizes="32x32" href="assets/images/favicon-32.png" />
   <link rel="icon" type="image/png" sizes="512x512" href="assets/images/favicon.png" />
   <link rel="apple-touch-icon" href="assets/images/apple-touch-icon.png" />
@@ -43,6 +44,41 @@ fbq('track', 'PageView');
 src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
 /></noscript>
 <!-- End Meta Pixel Code -->
+<style>
+  /* ===== Custom contact form (cream + gold, brand) ===== */
+  .uh-form{font-family:'Montserrat',sans-serif;background:#faf6ee;border:1px solid var(--border-dark);
+    border-radius:10px;padding:clamp(1.4rem,3vw,2.2rem);box-shadow:0 18px 50px rgba(20,28,44,.06);}
+  .uh-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.05rem 1.2rem;}
+  .uh-field{display:flex;flex-direction:column;gap:.42rem;min-width:0;}
+  .uh-full{grid-column:1 / -1;}
+  .uh-field label{font-size:.7rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#3a4453;}
+  .uh-field .req{color:var(--gold);}
+  .uh-field input,.uh-field textarea,.uh-field select{
+    width:100%;box-sizing:border-box;font-family:'Montserrat',sans-serif;font-size:.95rem;color:#1f2a3a;
+    background:#fffdf9;border:1px solid rgba(31,42,58,.18);border-radius:6px;
+    padding:.72rem .8rem;transition:border-color .15s,box-shadow .15s;}
+  .uh-field textarea{resize:vertical;min-height:120px;}
+  .uh-field input::placeholder,.uh-field textarea::placeholder{color:#9aa0a6;}
+  .uh-field input:focus,.uh-field textarea:focus,.uh-field select:focus{
+    outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,148,63,.16);}
+  .uh-select{position:relative;}
+  .uh-select select{appearance:none;-webkit-appearance:none;-moz-appearance:none;padding-right:2.2rem;cursor:pointer;}
+  .uh-select::after{content:"";position:absolute;right:1rem;top:50%;width:.5rem;height:.5rem;
+    border-right:2px solid #6f6a5f;border-bottom:2px solid #6f6a5f;
+    transform:translateY(-70%) rotate(45deg);pointer-events:none;}
+  .uh-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;}
+  .uh-submit{margin-top:1.45rem;width:100%;font-family:'Montserrat',sans-serif;font-weight:600;
+    font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#1b2430;background:var(--gold);
+    border:none;border-radius:6px;padding:.95rem 1.5rem;cursor:pointer;transition:background .2s,transform .05s;}
+  .uh-submit:hover{background:#c9a24a;}
+  .uh-submit:active{transform:translateY(1px);}
+  .uh-submit:disabled{opacity:.6;cursor:not-allowed;}
+  .uh-note{margin:.9rem 0 0;font-size:.72rem;color:#8b8578;}
+  .uh-status{margin:1rem 0 0;font-size:.9rem;line-height:1.5;font-weight:500;}
+  .uh-status.ok{color:#2e7d52;}
+  .uh-status.err{color:#c0392b;}
+  @media(max-width:640px){.uh-grid{grid-template-columns:1fr;}}
+  </style>
 </head>
 <body data-page="contact">
   <!-- Google Tag Manager (noscript) -->
@@ -92,9 +128,81 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
         </div>
       </div>
 
-      <div class="contact-form contact-form--houzz">
-        <!-- Houzz Pro Contact Form - submissions create a Lead in Houzz Pro automatically -->
-        <iframe id="hzcf-iframe-1bafabe9-0712-4eec-b159-027c7fba8d6e" src="https://www.houzz.com/contact-forms/view/1bafabe9-0712-4eec-b159-027c7fba8d6e" style="padding:0;border:none;width:100%;min-height:1168px;display:block;background:#fff;border-radius:var(--radius);" title="Houzz Pro Contact Form" scrolling="no" width="100%" height="1168"></iframe>
+      <div class="contact-form">
+        <form id="uhForm" class="uh-form" novalidate>
+          <div class="uh-grid">
+            <div class="uh-field">
+              <label for="uh-name">Name <span class="req">*</span></label>
+              <input id="uh-name" name="name" type="text" required autocomplete="name" />
+            </div>
+            <div class="uh-field">
+              <label for="uh-email">Email <span class="req">*</span></label>
+              <input id="uh-email" name="email" type="email" required autocomplete="email" />
+            </div>
+            <div class="uh-field">
+              <label for="uh-phone">Phone <span class="req">*</span></label>
+              <input id="uh-phone" name="phone" type="tel" required autocomplete="tel" />
+            </div>
+            <div class="uh-field">
+              <label for="uh-zip">Zip</label>
+              <input id="uh-zip" name="zip" type="text" inputmode="numeric" autocomplete="postal-code" />
+            </div>
+            <div class="uh-field">
+              <label for="uh-address">Address</label>
+              <input id="uh-address" name="address" type="text" autocomplete="street-address" />
+            </div>
+            <div class="uh-field">
+              <label for="uh-project">Project Type</label>
+              <div class="uh-select">
+                <select id="uh-project" name="project_type">
+                  <option value="" selected>Select...</option>
+                  <option>Whole House Remodel</option>
+                  <option>Kitchen Remodel</option>
+                  <option>Bathroom Remodel</option>
+                  <option>ADU &amp; Home Addition</option>
+                  <option>Custom Home</option>
+                  <option>Commercial</option>
+                  <option>Other</option>
+                </select>
+              </div>
+            </div>
+            <div class="uh-field">
+              <label for="uh-budget">Budget</label>
+              <div class="uh-select">
+                <select id="uh-budget" name="budget">
+                  <option value="" selected>Select...</option>
+                  <option>Under $100k</option>
+                  <option>$100k to $250k</option>
+                  <option>$250k to $500k</option>
+                  <option>$500k to $1M</option>
+                  <option>$1M+</option>
+                  <option>Not sure yet</option>
+                </select>
+              </div>
+            </div>
+            <div class="uh-field">
+              <label for="uh-timeline">Timeline</label>
+              <div class="uh-select">
+                <select id="uh-timeline" name="timeline">
+                  <option value="" selected>Select...</option>
+                  <option>ASAP</option>
+                  <option>1 to 3 months</option>
+                  <option>3 to 6 months</option>
+                  <option>6 to 12 months</option>
+                  <option>Just exploring</option>
+                </select>
+              </div>
+            </div>
+            <div class="uh-field uh-full">
+              <label for="uh-message">Message <span class="req">*</span></label>
+              <textarea id="uh-message" name="message" rows="5" required></textarea>
+            </div>
+          </div>
+          <input type="checkbox" name="botcheck" class="uh-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <button type="submit" class="uh-submit">Send Message</button>
+          <p class="uh-note">Fields marked * are required. We reply within one business day.</p>
+          <p class="uh-status" id="uhStatus" role="status" aria-live="polite"></p>
+        </form>
       </div>
     </div>
   </section>
@@ -115,6 +223,55 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
   </footer>
 
   <script src="script.20260814211618.js"></script>
+  <script>
+  (function(){
+    var form = document.getElementById('uhForm');
+    if(!form) return;
+    var statusEl = document.getElementById('uhStatus');
+    var btn = form.querySelector('.uh-submit');
+    var WEB3FORMS_KEY = '236c6650-bfc3-4fec-bc28-acfe81be012a';
+    var SHEET_ENDPOINT = ''; // Google Apps Script URL (path B -> Zapier -> Houzz). Fill in later.
+    form.addEventListener('submit', function(e){
+      e.preventDefault();
+      if(form.botcheck && form.botcheck.checked) return; // honeypot
+      if(!form.checkValidity()){ form.reportValidity(); return; }
+      btn.disabled = true; var orig = btn.textContent; btn.textContent = 'Sending...';
+      statusEl.className = 'uh-status'; statusEl.textContent = '';
+      var data = {
+        access_key: WEB3FORMS_KEY,
+        subject: 'New website lead - UniqHaus contact form',
+        from_name: 'UniqHaus Website',
+        name: form.name.value, email: form.email.value, phone: form.phone.value,
+        zip: form.zip.value, address: form.address.value,
+        project_type: form.project_type.value, budget: form.budget.value,
+        timeline: form.timeline.value, message: form.message.value
+      };
+      // 1) Web3Forms -> email to info@theuniqhaus.com (always on)
+      var send = fetch('https://api.web3forms.com/submit', {
+        method: 'POST', headers: {'Content-Type':'application/json', Accept:'application/json'},
+        body: JSON.stringify(data)
+      }).then(function(r){ return r.json(); });
+      // 2) Google Sheet -> Zapier -> Houzz Pro (best effort; enabled once SHEET_ENDPOINT is set)
+      if(SHEET_ENDPOINT){
+        try{ fetch(SHEET_ENDPOINT, {method:'POST', mode:'no-cors',
+          headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)}); }catch(err){}
+      }
+      send.then(function(res){
+        if(res && res.success){
+          form.reset();
+          statusEl.className = 'uh-status ok';
+          statusEl.textContent = 'Thank you. Your message has been sent - we will reply within one business day.';
+        } else {
+          statusEl.className = 'uh-status err';
+          statusEl.textContent = 'Something went wrong. Please call 650-866-5665 or email info@theuniqhaus.com.';
+        }
+      }).catch(function(){
+        statusEl.className = 'uh-status err';
+        statusEl.textContent = 'Network error. Please call 650-866-5665 or email info@theuniqhaus.com.';
+      }).finally(function(){ btn.disabled = false; btn.textContent = orig; });
+    });
+  })();
+  </script>
 </body>
 </html>
 
