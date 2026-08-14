@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" /></noscript>
-  <link rel="stylesheet" href="style.20260814220956.css" />
+  <link rel="stylesheet" href="style.20260814221756.css" />
   <!-- Google Tag Manager -->
   <script>window.dataLayer=window.dataLayer||[];(function(w,d,s,l,i){var loaded=false;function g(){if(loaded)return;loaded=true;w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);}var ev=['scroll','mousemove','touchstart','click','keydown'];function t(){ev.forEach(function(e){w.removeEventListener(e,t)});g();}ev.forEach(function(e){w.addEventListener(e,t,{passive:true})});setTimeout(g,3500);})(window,document,'script','dataLayer','GTM-NJXQKZ6K');</script>
   <!-- End Google Tag Manager -->
@@ -46,37 +46,38 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
 <!-- End Meta Pixel Code -->
 <style>
   /* ===== Custom contact form (cream + gold, brand) ===== */
-  .uh-form{font-family:'Montserrat',sans-serif;background:#faf6ee;border:1px solid var(--border-dark);
-    border-radius:10px;padding:clamp(1.4rem,3vw,2.2rem);box-shadow:0 18px 50px rgba(20,28,44,.06);}
-  .uh-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.05rem 1.2rem;}
-  .uh-field{display:flex;flex-direction:column;gap:.42rem;min-width:0;}
+  #contact .contact-form{background:transparent;border:none;padding:0;box-shadow:none;}
+  .uh-form{font-family:'Montserrat',sans-serif;}
+  .uh-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem 1.4rem;}
+  .uh-field{display:flex;flex-direction:column;gap:.55rem;min-width:0;}
   .uh-full{grid-column:1 / -1;}
-  .uh-field label{font-size:.7rem;font-weight:600;letter-spacing:.09em;text-transform:uppercase;color:#3a4453;}
+  .uh-field label{font-size:.72rem;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#e8ecf1;}
   .uh-field .req{color:var(--gold);}
   .uh-field input,.uh-field textarea,.uh-field select{
-    width:100%;box-sizing:border-box;font-family:'Montserrat',sans-serif;font-size:.95rem;color:#1f2a3a;
-    background:#fffdf9;border:1px solid rgba(31,42,58,.18);border-radius:6px;
-    padding:.72rem .8rem;transition:border-color .15s,box-shadow .15s;}
-  .uh-field textarea{resize:vertical;min-height:120px;}
-  .uh-field input::placeholder,.uh-field textarea::placeholder{color:#9aa0a6;}
+    width:100%;box-sizing:border-box;font-family:'Montserrat',sans-serif;font-size:.95rem;color:#f2f4f7;
+    background:rgba(255,255,255,.045);border:1px solid rgba(255,255,255,.14);border-radius:8px;
+    padding:.85rem .9rem;transition:border-color .15s,box-shadow .15s,background .15s;}
+  .uh-field textarea{resize:vertical;min-height:130px;}
+  .uh-field input::placeholder,.uh-field textarea::placeholder{color:#8b95a3;}
   .uh-field input:focus,.uh-field textarea:focus,.uh-field select:focus{
-    outline:none;border-color:var(--gold);box-shadow:0 0 0 3px rgba(184,148,63,.16);}
+    outline:none;border-color:var(--gold);background:rgba(255,255,255,.07);box-shadow:0 0 0 3px rgba(184,148,63,.18);}
   .uh-select{position:relative;}
   .uh-select select{appearance:none;-webkit-appearance:none;-moz-appearance:none;padding-right:2.2rem;cursor:pointer;}
+  .uh-select select option{color:#1f2a3a;}
   .uh-select::after{content:"";position:absolute;right:1rem;top:50%;width:.5rem;height:.5rem;
-    border-right:2px solid #6f6a5f;border-bottom:2px solid #6f6a5f;
+    border-right:2px solid #b6bec9;border-bottom:2px solid #b6bec9;
     transform:translateY(-70%) rotate(45deg);pointer-events:none;}
   .uh-hp{position:absolute!important;left:-9999px!important;width:1px;height:1px;opacity:0;}
-  .uh-submit{margin-top:1.45rem;width:100%;font-family:'Montserrat',sans-serif;font-weight:600;
+  .uh-submit{margin-top:1.6rem;width:100%;font-family:'Montserrat',sans-serif;font-weight:600;
     font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;color:#1b2430;background:var(--gold);
-    border:none;border-radius:6px;padding:.95rem 1.5rem;cursor:pointer;transition:background .2s,transform .05s;}
+    border:none;border-radius:8px;padding:1rem 1.5rem;cursor:pointer;transition:background .2s,transform .05s;}
   .uh-submit:hover{background:#c9a24a;}
   .uh-submit:active{transform:translateY(1px);}
   .uh-submit:disabled{opacity:.6;cursor:not-allowed;}
-  .uh-note{margin:.9rem 0 0;font-size:.72rem;color:#8b8578;}
+  .uh-note{margin:.9rem 0 0;font-size:.72rem;color:#8b95a3;}
   .uh-status{margin:1rem 0 0;font-size:.9rem;line-height:1.5;font-weight:500;}
-  .uh-status.ok{color:#2e7d52;}
-  .uh-status.err{color:#c0392b;}
+  .uh-status.ok{color:#6ecf9f;}
+  .uh-status.err{color:#f0938a;}
   /* info cards (left column, on dark section) */
   .contact-info{align-self:center;}
   .uh-cards{display:flex;flex-direction:column;gap:1.35rem;}
@@ -92,7 +93,7 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
   /* SMS/phone consent (inside cream form) */
   .uh-consent{display:flex;gap:.6rem;align-items:flex-start;margin-top:1.2rem;cursor:pointer;}
   .uh-consent input{margin-top:.15rem;width:16px;height:16px;flex:0 0 auto;accent-color:var(--gold);cursor:pointer;}
-  .uh-consent span{font-family:'Montserrat',sans-serif;font-size:.72rem;line-height:1.55;color:#6f6a5f;}
+  .uh-consent span{font-family:'Montserrat',sans-serif;font-size:.72rem;line-height:1.55;color:#aab2bd;}
   .uh-consent a{color:var(--gold);text-decoration:underline;}
   @media(max-width:640px){.uh-grid{grid-template-columns:1fr;}}
   </style>
@@ -248,7 +249,7 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
     </div>
   </footer>
 
-  <script src="script.20260814220956.js"></script>
+  <script src="script.20260814221756.js"></script>
   <script>
   (function(){
     var form = document.getElementById('uhForm');
