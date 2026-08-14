@@ -23,7 +23,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" onload="this.onload=null;this.rel='stylesheet'" /><noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@300;400;500;600;700;800&display=swap" /></noscript>
-  <link rel="stylesheet" href="style.20260814211618.css" />
+  <link rel="stylesheet" href="style.20260814212510.css" />
   <!-- Google Tag Manager -->
   <script>window.dataLayer=window.dataLayer||[];(function(w,d,s,l,i){var loaded=false;function g(){if(loaded)return;loaded=true;w[l].push({'gtm.start':new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],j=d.createElement(s);j.async=true;j.src='https://www.googletagmanager.com/gtm.js?id='+i;f.parentNode.insertBefore(j,f);}var ev=['scroll','mousemove','touchstart','click','keydown'];function t(){ev.forEach(function(e){w.removeEventListener(e,t)});g();}ev.forEach(function(e){w.addEventListener(e,t,{passive:true})});setTimeout(g,3500);})(window,document,'script','dataLayer','GTM-NJXQKZ6K');</script>
   <!-- End Google Tag Manager -->
@@ -77,6 +77,22 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
   .uh-status{margin:1rem 0 0;font-size:.9rem;line-height:1.5;font-weight:500;}
   .uh-status.ok{color:#2e7d52;}
   .uh-status.err{color:#c0392b;}
+  /* info cards (left column, on dark section) */
+  .uh-cards{display:flex;flex-direction:column;gap:1.1rem;}
+  .uh-card{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.09);
+    border-radius:10px;padding:1.35rem 1.5rem;}
+  .uh-card-label{font-family:'Montserrat',sans-serif;font-size:.72rem;font-weight:600;
+    letter-spacing:.14em;text-transform:uppercase;color:var(--gold);margin:0 0 .55rem;}
+  .uh-card-phone{display:inline-block;font-family:'Cormorant Garamond',Georgia,serif;font-weight:600;
+    font-size:2rem;line-height:1;color:#fff;text-decoration:none;}
+  .uh-card-phone:hover{color:var(--gold);}
+  .uh-card-line{font-family:'Montserrat',sans-serif;font-size:.92rem;line-height:1.6;color:#c7cfd9;margin:0 0 .35rem;}
+  .uh-card-line:last-child{margin-bottom:0;}
+  /* SMS/phone consent (inside cream form) */
+  .uh-consent{display:flex;gap:.6rem;align-items:flex-start;margin-top:1.2rem;cursor:pointer;}
+  .uh-consent input{margin-top:.15rem;width:16px;height:16px;flex:0 0 auto;accent-color:var(--gold);cursor:pointer;}
+  .uh-consent span{font-family:'Montserrat',sans-serif;font-size:.72rem;line-height:1.55;color:#6f6a5f;}
+  .uh-consent a{color:var(--gold);text-decoration:underline;}
   @media(max-width:640px){.uh-grid{grid-template-columns:1fr;}}
   </style>
 </head>
@@ -115,16 +131,21 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
   <section id="contact">
     <div class="container contact-grid">
       <div class="contact-info">
-        <p class="section-label">CONTACT US</p>
-        <h2>Tell Us About<br /><em>Your Project</em></h2>
-        <p>The earlier we talk, the more options we can protect. Reach out before major layout, budget, or permit decisions are locked in.</p>
-
-        <div class="contact-details">
-          <div class="contact-detail"><strong>Studio</strong><span>2570 N First St, San Jose, CA 95131</span></div>
-          <div class="contact-detail"><strong>Service Area</strong><span>San Jose &amp; the San Francisco Bay Area</span></div>
-          <div class="contact-detail"><strong>Call Us</strong><a href="tel:+16508665665">650-866-5665</a></div>
-          <div class="contact-detail"><strong>Email Us</strong><a href="mailto:info@theuniqhaus.com">info@theuniqhaus.com</a></div>
-          <div class="contact-detail"><strong>Hours</strong><span>Monday to Sunday: 9AM to 8PM</span></div>
+        <div class="uh-cards">
+          <div class="uh-card">
+            <p class="uh-card-label">Call Us Directly</p>
+            <a class="uh-card-phone" href="tel:+18883061688">(888) 306-1688</a>
+          </div>
+          <div class="uh-card">
+            <p class="uh-card-label">Office Hours</p>
+            <p class="uh-card-line">Mon to Fri: 8:00 AM to 6:00 PM</p>
+            <p class="uh-card-line">Sat: 9:00 AM to 4:00 PM</p>
+            <p class="uh-card-line">Sun: Closed</p>
+          </div>
+          <div class="uh-card">
+            <p class="uh-card-label">Service Area</p>
+            <p class="uh-card-line">We serve the entire Bay Area including San Jose, Palo Alto, Los Gatos, Saratoga, Atherton, Hillsborough, and surrounding communities.</p>
+          </div>
         </div>
       </div>
 
@@ -199,6 +220,10 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
             </div>
           </div>
           <input type="checkbox" name="botcheck" class="uh-hp" tabindex="-1" autocomplete="off" aria-hidden="true" />
+          <label class="uh-consent">
+            <input type="checkbox" name="phone_consent" value="Yes" />
+            <span>By providing your phone number, you consent to receive calls and text messages from Custom Home Design and Build, our design partner NCA Designs, and affiliated entities under CLAH Inc. Reply STOP to opt out. Message and data rates may apply. See our <a href="privacy.html" target="_blank" rel="noopener">Privacy Policy</a>.</span>
+          </label>
           <button type="submit" class="uh-submit">Send Message</button>
           <p class="uh-note">Fields marked * are required. We reply within one business day.</p>
           <p class="uh-status" id="uhStatus" role="status" aria-live="polite"></p>
@@ -222,7 +247,7 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
     </div>
   </footer>
 
-  <script src="script.20260814211618.js"></script>
+  <script src="script.20260814212510.js"></script>
   <script>
   (function(){
     var form = document.getElementById('uhForm');
@@ -244,7 +269,8 @@ src="https://www.facebook.com/tr?id=3035724050092641&ev=PageView&noscript=1"
         name: form.name.value, email: form.email.value, phone: form.phone.value,
         zip: form.zip.value, address: form.address.value,
         project_type: form.project_type.value, budget: form.budget.value,
-        timeline: form.timeline.value, message: form.message.value
+        timeline: form.timeline.value, message: form.message.value,
+        phone_consent: (form.phone_consent && form.phone_consent.checked) ? 'Yes' : 'No'
       };
       // 1) Web3Forms -> email to info@theuniqhaus.com (always on)
       var send = fetch('https://api.web3forms.com/submit', {
