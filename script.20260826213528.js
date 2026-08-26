@@ -2447,15 +2447,34 @@ if (svcModal) {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var wide = window.matchMedia('(min-width: 768px)').matches;
   if (!wide || reduced) return;
-  [['assets/video/hero-ht.webm','video/webm'], ['assets/video/hero-ht.mp4','video/mp4']].forEach(function(s){
-    var el = document.createElement('source'); el.src = s[0]; el.type = s[1]; v.appendChild(el);
-  });
-  v.load();
-  v.addEventListener('canplay', function(){
-    v.classList.add('is-ready');
-    var p = v.play();
-    if (p && p.catch) { p.catch(function(){}); }
-  });
+  // On slow connections or Data Saver, keep the poster and skip the ~2MB video
+  // entirely: it was starving image bandwidth and taking tens of seconds to appear.
+  var conn = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
+  if (conn) {
+    if (conn.saveData) return;
+    if (/(^|-)2g$|3g/.test(conn.effectiveType || '')) return;
+  }
+  function loadHeroVideo(){
+    if (v.dataset.loaded) return; v.dataset.loaded = '1';
+    [['assets/video/hero-ht.webm','video/webm'], ['assets/video/hero-ht.mp4','video/mp4']].forEach(function(s){
+      var el = document.createElement('source'); el.src = s[0]; el.type = s[1]; v.appendChild(el);
+    });
+    v.load();
+    v.addEventListener('canplay', function(){
+      v.classList.add('is-ready');
+      var p = v.play();
+      if (p && p.catch) { p.catch(function(){}); }
+    });
+  }
+  // Give the poster + above-the-fold images a head start, then load the video
+  // WITHOUT waiting for every lazy image ('load' can be very late on slow links,
+  // which delayed the video by tens of seconds). loadHeroVideo is idempotent, so
+  // whichever timer fires first wins: fast path = shortly after full load,
+  // hard cap = 2.5s after the DOM is ready.
+  window.addEventListener('load', function(){ setTimeout(loadHeroVideo, 300); });
+  function cap(){ setTimeout(loadHeroVideo, 2500); }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', cap); }
+  else { cap(); }
 })();
 // ─── PROJECT GALLERY LIGHTBOX (detail pages) ───────────────────────────────
 (function(){
@@ -2528,80 +2547,4 @@ if (svcModal) {
   function done(){ if (--left <= 0){ measure(); apply(); } }
   imgs.forEach(function(im){ if (im.complete) done(); else { im.addEventListener('load', done); im.addEventListener('error', done); } });
   measure(); apply();
-})();
-
-// ─── VIOLA SOFA GIVEAWAY POPUP (Brevo-backed lead capture) ──────────────────
-(function(){
-  var BREVO_ACTION = 'https://c4e61cd7.sibforms.com/serve/MUIFANJl119bcJUgZbCZEC1XPhN99iLr3kNrm34lB8LIgahLlRkWEd1TUaNkLrC_0eRrWo2qAlZv-Grqlfsc-7b8YOQOB1bH1IQjrLAp8xlQjeqpuBn0LVMBvM4dxPTohLxRNZiG1sIdZPRGew7l90cCcBY2E-cjxeLU-TryTLUx1O6VgI6p-DTggg6H1rF0o-Ch8Wu7e_WeO02Izg==';
-  var WEB3FORMS_KEY = '236c6650-bfc3-4fec-bc28-acfe81be012a';  // emails each entry to info@theuniqhaus.com
-  var STORAGE_KEY = 'uh_viola_popup';
-  var SHOW_DELAY = 1000;   // ms after load before the popup appears
-  var REMIND_DAYS = 7;     // if closed without entering, wait this long before showing again
-
-  if (/giveaway-terms/i.test(location.pathname)) return;         // don't cover the rules page
-  var saved = localStorage.getItem(STORAGE_KEY);
-  if (saved === 'entered') return;
-  if (saved) { var ts = parseInt(saved, 10); if (!isNaN(ts) && (Date.now() - ts) < REMIND_DAYS * 864e5) return; }
-
-  function dl(ev){ window.dataLayer = window.dataLayer || []; window.dataLayer.push({ event: ev }); }
-
-  var ov = document.createElement('div');
-  ov.className = 'uhg-overlay';
-  ov.setAttribute('role', 'dialog'); ov.setAttribute('aria-modal', 'true'); ov.setAttribute('aria-label', 'Viola sofa giveaway');
-  ov.innerHTML =
-    '<div class="uhg-card">' +
-      '<button class="uhg-close" aria-label="Close">&times;</button>' +
-      '<div class="uhg-body">' +
-        '<p class="uhg-label">UniqHaus Giveaway</p>' +
-        '<h3>Win a Free Viola Sofa</h3>' +
-        '<p class="uhg-value">$3,197 Value</p>' +
-        '<p class="uhg-draw">New winner drawn every month &bull; while supplies last</p>' +
-        '<form class="uhg-form" novalidate>' +
-          '<input class="uhg-field" type="text" name="name" placeholder="Full name" autocomplete="name" required />' +
-          '<input class="uhg-field" type="email" name="email" placeholder="Email address" autocomplete="email" required />' +
-          '<button class="uhg-btn" type="submit">Enter to Win</button>' +
-          '<p class="uhg-msg" aria-live="polite"></p>' +
-        '</form>' +
-        '<p class="uhg-fine">No purchase necessary. By entering you agree to receive UniqHaus emails - unsubscribe anytime. <a href="giveaway-terms.html" target="_blank" rel="noopener">Terms &amp; Conditions</a>.</p>' +
-      '</div>' +
-    '</div>';
-
-  var card = ov.querySelector('.uhg-card');
-
-  function open(){ document.body.appendChild(ov); requestAnimationFrame(function(){ ov.classList.add('uhg-open'); }); dl('popup_view'); document.addEventListener('keydown', onKey); }
-  function dismiss(reason){ ov.classList.remove('uhg-open'); localStorage.setItem(STORAGE_KEY, reason === 'entered' ? 'entered' : String(Date.now())); document.removeEventListener('keydown', onKey); setTimeout(function(){ if (ov.parentNode) ov.parentNode.removeChild(ov); }, 400); }
-  function onKey(e){ if (e.key === 'Escape') { dl('popup_close'); dismiss('closed'); } }
-
-  ov.addEventListener('click', function(e){ if (e.target === ov) { dl('popup_close'); dismiss('closed'); } });
-  ov.querySelector('.uhg-close').addEventListener('click', function(){ dl('popup_close'); dismiss('closed'); });
-
-  ov.querySelector('.uhg-form').addEventListener('submit', function(e){
-    e.preventDefault();
-    var f = e.target, name = f.name.value.trim(), email = f.email.value.trim();
-    var msg = f.querySelector('.uhg-msg'), btn = f.querySelector('.uhg-btn');
-    if (!name || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) { msg.textContent = 'Please enter your name and a valid email.'; return; }
-    btn.disabled = true; msg.textContent = 'Entering…';
-    // notify the UniqHaus inbox (best-effort, non-blocking) via Web3Forms
-    fetch('https://api.web3forms.com/submit', { method: 'POST', headers: { 'Content-Type': 'application/json', 'Accept': 'application/json' }, body: JSON.stringify({ access_key: WEB3FORMS_KEY, subject: 'New Viola Sofa giveaway entry', from_name: 'UniqHaus Giveaway', name: name, email: email }) }).catch(function(){});
-    var body = new URLSearchParams();
-    body.append('EMAIL', email);
-    body.append('FIRSTNAME', name);
-    body.append('email_address_check', '');  // Brevo honeypot - must stay empty
-    body.append('locale', 'en');
-    fetch(BREVO_ACTION, { method: 'POST', mode: 'no-cors', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body.toString() })
-      .then(function(){
-        dl('popup_signup');
-        var safe = name.replace(/[<>]/g, '');
-        card.querySelector('.uhg-body').innerHTML =
-          '<p class="uhg-label">You\'re In!</p>' +
-          '<h3>Entry Received</h3>' +
-          '<p class="uhg-draw" style="font-size:.9rem;line-height:1.6;margin-top:.6rem">Thanks, ' + safe + '! You\'re in this month\'s draw for a free Viola sofa. We\'ve emailed your confirmation - we draw a new winner every month while supplies last.</p>';
-        localStorage.setItem(STORAGE_KEY, 'entered');
-        setTimeout(function(){ dismiss('entered'); }, 5000);
-      })
-      .catch(function(){ btn.disabled = false; msg.textContent = 'Something went wrong. Please try again.'; });
-  });
-
-  if (document.readyState === 'complete') setTimeout(open, SHOW_DELAY);
-  else window.addEventListener('load', function(){ setTimeout(open, SHOW_DELAY); });
 })();
