@@ -2447,15 +2447,26 @@ if (svcModal) {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var wide = window.matchMedia('(min-width: 768px)').matches;
   if (!wide || reduced) return;
-  [['assets/video/hero-ht.webm','video/webm'], ['assets/video/hero-ht.mp4','video/mp4']].forEach(function(s){
-    var el = document.createElement('source'); el.src = s[0]; el.type = s[1]; v.appendChild(el);
-  });
-  v.load();
-  v.addEventListener('canplay', function(){
-    v.classList.add('is-ready');
-    var p = v.play();
-    if (p && p.catch) { p.catch(function(){}); }
-  });
+  function loadHeroVideo(){
+    if (v.dataset.loaded) return; v.dataset.loaded = '1';
+    [['assets/video/hero-ht.webm','video/webm'], ['assets/video/hero-ht.mp4','video/mp4']].forEach(function(s){
+      var el = document.createElement('source'); el.src = s[0]; el.type = s[1]; v.appendChild(el);
+    });
+    v.load();
+    v.addEventListener('canplay', function(){
+      v.classList.add('is-ready');
+      var p = v.play();
+      if (p && p.catch) { p.catch(function(){}); }
+    });
+  }
+  // Defer the video until the page has loaded and is idle, so the poster and
+  // images get bandwidth first (fixes slow first paint / images not showing).
+  function schedule(){
+    if ('requestIdleCallback' in window) { requestIdleCallback(loadHeroVideo, { timeout: 3000 }); }
+    else { setTimeout(loadHeroVideo, 1200); }
+  }
+  if (document.readyState === 'complete') { schedule(); }
+  else { window.addEventListener('load', schedule); }
 })();
 // ─── PROJECT GALLERY LIGHTBOX (detail pages) ───────────────────────────────
 (function(){

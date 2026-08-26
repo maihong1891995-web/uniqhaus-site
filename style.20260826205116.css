@@ -4788,3 +4788,6 @@ picture { display: contents; }
   .profile-card { grid-template-columns: 1fr; }
   .profile-body { padding: 1.6rem 1.5rem 1.8rem; }
 }
+
+.article-byline{font-family:'Montserrat',sans-serif;font-size:.8rem;line-height:1.5;color:#6f6a5f;margin:0 0 1.4rem;letter-spacing:.01em;}
+.article-byline strong{color:#3a4453;font-weight:600;}
