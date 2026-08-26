@@ -2447,15 +2447,34 @@ if (svcModal) {
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var wide = window.matchMedia('(min-width: 768px)').matches;
   if (!wide || reduced) return;
-  [['assets/video/hero-ht.webm','video/webm'], ['assets/video/hero-ht.mp4','video/mp4']].forEach(function(s){
-    var el = document.createElement('source'); el.src = s[0]; el.type = s[1]; v.appendChild(el);
-  });
-  v.load();
-  v.addEventListener('canplay', function(){
-    v.classList.add('is-ready');
-    var p = v.play();
-    if (p && p.catch) { p.catch(function(){}); }
-  });
+  // On slow connections or Data Saver, keep the poster and skip the ~2MB video
+  // entirely: it was starving image bandwidth and taking tens of seconds to appear.
+  var conn = navigator.connection || navigator.webkitConnection || navigator.mozConnection;
+  if (conn) {
+    if (conn.saveData) return;
+    if (/(^|-)2g$|3g/.test(conn.effectiveType || '')) return;
+  }
+  function loadHeroVideo(){
+    if (v.dataset.loaded) return; v.dataset.loaded = '1';
+    [['assets/video/hero-ht.webm','video/webm'], ['assets/video/hero-ht.mp4','video/mp4']].forEach(function(s){
+      var el = document.createElement('source'); el.src = s[0]; el.type = s[1]; v.appendChild(el);
+    });
+    v.load();
+    v.addEventListener('canplay', function(){
+      v.classList.add('is-ready');
+      var p = v.play();
+      if (p && p.catch) { p.catch(function(){}); }
+    });
+  }
+  // Give the poster + above-the-fold images a head start, then load the video
+  // WITHOUT waiting for every lazy image ('load' can be very late on slow links,
+  // which delayed the video by tens of seconds). loadHeroVideo is idempotent, so
+  // whichever timer fires first wins: fast path = shortly after full load,
+  // hard cap = 2.5s after the DOM is ready.
+  window.addEventListener('load', function(){ setTimeout(loadHeroVideo, 300); });
+  function cap(){ setTimeout(loadHeroVideo, 2500); }
+  if (document.readyState === 'loading') { document.addEventListener('DOMContentLoaded', cap); }
+  else { cap(); }
 })();
 // ─── PROJECT GALLERY LIGHTBOX (detail pages) ───────────────────────────────
 (function(){
