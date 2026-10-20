@@ -4778,3 +4778,10 @@ picture { display: contents; }
 
 .article-byline{font-family:'Montserrat',sans-serif;font-size:.8rem;line-height:1.5;color:#6f6a5f;margin:0 0 1.4rem;letter-spacing:.01em;}
 .article-byline strong{color:#3a4453;font-weight:600;}
+
+
+/* BuildZoom contractor badge (footer, cream bg) - sized to match the 36px social icons */
+.bz-bdg{margin-top:1.35rem;}
+.bz-bdg>a{display:block;font-family:Helvetica,Arial,sans-serif;font-size:8px;font-weight:500;margin-top:3px;color:#484848;line-height:10px;}
+.bz-bdg>a img{height:36px;width:auto;display:block;}
+.bz-bdg .small-label{margin-top:-12px;padding:0 10px;}
