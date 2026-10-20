@@ -4778,3 +4778,32 @@ picture { display: contents; }
 
 .article-byline{font-family:'Montserrat',sans-serif;font-size:.8rem;line-height:1.5;color:#6f6a5f;margin:0 0 1.4rem;letter-spacing:.01em;}
 .article-byline strong{color:#3a4453;font-weight:600;}
+
+
+/* BuildZoom contractor badge (footer, cream bg) - sized to match the 36px social icons */
+.bz-bdg{margin-top:1.35rem;}
+.bz-bdg>a{display:block;font-family:Helvetica,Arial,sans-serif;font-size:8px;font-weight:500;margin-top:3px;color:#484848;line-height:10px;}
+.bz-bdg>a img{height:36px;width:auto;display:block;}
+.bz-bdg .small-label{margin-top:-12px;padding:0 10px;}
+
+
+/* BOFU trust bar (pre-footer, all pages) */
+.trust-bar{background:var(--dark);color:#f3efe6;}
+.trust-bar-inner{display:flex;flex-wrap:wrap;justify-content:center;align-items:flex-start;gap:1.4rem 2.75rem;padding:1.5rem 2rem;max-width:1200px;margin:0 auto;}
+.trust-item{display:flex;flex-direction:column;align-items:center;text-align:center;line-height:1.25;min-width:84px;}
+.trust-item strong{font-family:'Montserrat',sans-serif;font-size:1.15rem;font-weight:700;color:#e2b95f;}
+.trust-item span{font-size:0.68rem;letter-spacing:0.09em;text-transform:uppercase;color:rgba(243,239,230,0.82);margin-top:0.25rem;}
+@media(max-width:600px){.trust-bar-inner{gap:1.1rem 1.5rem;padding:1.2rem 1rem;}.trust-item strong{font-size:1rem;}.trust-item span{font-size:0.6rem;}}
+
+
+/* Client reviews / testimonials (BOFU social proof) */
+.reviews-section{background:var(--cream);padding:clamp(3.5rem,6vw,5.5rem) 2rem;border-top:1px solid var(--border-dark);}
+.reviews-head{text-align:center;max-width:640px;margin:0 auto 2.5rem;}
+.reviews-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:600;margin:0.3rem 0 0.6rem;color:#1f2a3a;}
+.reviews-stars-lg{color:#e2b95f;font-size:1.1rem;letter-spacing:2px;margin:0;}
+.reviews-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1.6rem;max-width:1150px;margin:0 auto;}
+.review-card{background:#fff;border:1px solid rgba(31,42,58,0.1);border-radius:12px;padding:1.75rem;display:flex;flex-direction:column;box-shadow:0 10px 30px rgba(0,0,0,0.04);}
+.review-card .review-stars{color:#e2b95f;font-size:0.95rem;letter-spacing:2px;margin-bottom:0.75rem;}
+.review-card p{font-size:0.95rem;line-height:1.7;color:#3a3a3a;margin:0 0 1.1rem;}
+.review-author{margin-top:auto;font-family:'Montserrat',sans-serif;font-size:0.82rem;font-weight:600;color:#1f2a3a;}
+.review-author span{display:block;font-weight:400;font-size:0.72rem;color:#8a8577;margin-top:0.15rem;text-transform:uppercase;letter-spacing:0.06em;}
