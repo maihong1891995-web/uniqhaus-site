@@ -4807,3 +4807,11 @@ picture { display: contents; }
 .review-card p{font-size:0.95rem;line-height:1.7;color:#3a3a3a;margin:0 0 1.1rem;}
 .review-author{margin-top:auto;font-family:'Montserrat',sans-serif;font-size:0.82rem;font-weight:600;color:#1f2a3a;}
 .review-author span{display:block;font-weight:400;font-size:0.72rem;color:#8a8577;margin-top:0.15rem;text-transform:uppercase;letter-spacing:0.06em;}
+
+
+/* Project case study (BOFU proof) */
+.case-study{margin:2.75rem 0 0;max-width:760px;}
+.case-study-facts{font-size:0.9rem;color:#6f6a5f;border-top:1px solid var(--border-dark);padding-top:1.25rem;margin:0 0 1.75rem;}
+.case-study-block{margin-bottom:1.6rem;}
+.case-study-block h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#1f2a3a;margin:0 0 0.45rem;}
+.case-study-block p{font-size:1rem;line-height:1.8;color:#444;margin:0;}
