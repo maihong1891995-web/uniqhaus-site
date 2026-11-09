@@ -2548,3 +2548,29 @@ if (svcModal) {
   imgs.forEach(function(im){ if (im.complete) done(); else { im.addEventListener('load', done); im.addEventListener('error', done); } });
   measure(); apply();
 })();
+
+/* Header call menu: toggle the list of phone numbers; close on outside click or Escape */
+(function(){
+  var toggles = document.querySelectorAll('.call-toggle');
+  if (!toggles.length) return;
+  function closeAll(except){
+    toggles.forEach(function(b){
+      if (b === except) return;
+      b.setAttribute('aria-expanded', 'false');
+      var m = document.getElementById(b.getAttribute('aria-controls'));
+      if (m) m.hidden = true;
+    });
+  }
+  toggles.forEach(function(b){
+    b.addEventListener('click', function(e){
+      e.stopPropagation();
+      var m = document.getElementById(b.getAttribute('aria-controls'));
+      var open = b.getAttribute('aria-expanded') !== 'true';
+      closeAll(b);
+      b.setAttribute('aria-expanded', String(open));
+      if (m) m.hidden = !open;
+    });
+  });
+  document.addEventListener('click', function(e){ if (!e.target.closest('.call-wrap')) closeAll(); });
+  document.addEventListener('keydown', function(e){ if (e.key === 'Escape') closeAll(); });
+})();
