@@ -4815,3 +4815,28 @@ picture { display: contents; }
 .case-study-block{margin-bottom:1.6rem;}
 .case-study-block h3{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:#1f2a3a;margin:0 0 0.45rem;}
 .case-study-block p{font-size:1rem;line-height:1.8;color:#444;margin:0;}
+
+/* Header call menu: phone button opens a list of both numbers (desktop: "Call Us" in nav-actions; mobile: icon next to hamburger) */
+.call-wrap{position:relative;}
+.call-toggle{background:none;border:0;cursor:pointer;font-family:inherit;padding:.35rem .2rem;}
+.call-caret{transition:transform .2s ease;}
+.call-toggle[aria-expanded="true"] .call-caret{transform:rotate(180deg);}
+.call-menu{position:absolute;top:calc(100% + .7rem);right:0;min-width:220px;margin:0;padding:.45rem;list-style:none;background:#fff;border:1px solid rgba(31,42,58,.08);border-radius:12px;box-shadow:0 18px 40px rgba(31,42,58,.16);z-index:1100;}
+.call-menu[hidden]{display:none;}
+.call-menu-item{display:flex;align-items:center;gap:.75rem;padding:.7rem .8rem;border-radius:8px;color:var(--dark);text-decoration:none;transition:background .2s ease;}
+.call-menu-item:hover,.call-menu-item:focus-visible{background:#f6f1e7;}
+.call-menu-item svg{flex:none;width:18px;height:18px;color:#b8943f;}
+.call-menu-item strong{font-size:.95rem;letter-spacing:.02em;}
+.call-wrap--mobile{display:none;}
+.call-toggle--icon{display:inline-flex;align-items:center;justify-content:center;width:42px;height:42px;border-radius:50%;border:1px solid rgba(31,42,58,.15);color:var(--dark);}
+.call-toggle--icon svg{width:18px;height:18px;}
+@media (max-width:1024px){
+  .call-wrap--desktop{display:none;} /* tablet header has no room; same as the old phone link */
+}
+@media (max-width:768px){
+  .call-wrap--desktop{display:none;}
+  .call-wrap--mobile{display:block;margin-left:auto;}
+  .call-wrap--mobile + .nav-toggle{margin-left:.6rem;}
+  .call-wrap--mobile .call-menu{position:fixed;top:calc(env(safe-area-inset-top) + 4.6rem);left:1rem;right:1rem;min-width:0;}
+  .call-menu-item{padding:.95rem .9rem;}
+}
