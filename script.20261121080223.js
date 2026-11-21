@@ -4,7 +4,12 @@
 
 'use strict';
 
-const analyticsPage = document.body?.dataset.page || 'unknown';
+// data-page="reviews" is the Blog section key (nav + CSS); report blog pages to analytics by their real type
+const analyticsPage = (() => {
+  const page = document.body?.dataset.page || 'unknown';
+  if (page !== 'reviews') return page;
+  return /\/blog-[^/]+$/.test(window.location.pathname) ? 'blog-post' : 'blog';
+})();
 const trackedScrollMilestones = new Set();
 
 /* ─── FORM ENDPOINT CONFIG (Web3Forms) ──────────────────────────────────────
@@ -1558,25 +1563,6 @@ if (projectModal) {
         'assets/images/portfolio/belblossom/IMG_6646.jpg',
       ],
     },
-    aberdeen: {
-      tag: 'Bathroom Remodeling 2024',
-      title: 'The Aberdeen Project',
-      location: 'Aberdeen, CA',
-      summary: 'Bathroom and kitchen remodel that refreshed major living spaces with modern finishes.',
-      cover: 'assets/images/portfolio/aberdeen/cover.webp',
-      meta: [
-        { label: 'Scope', value: 'Bathroom and kitchen remodel' },
-        { label: 'Type', value: 'Bathroom Remodeling' },
-        { label: 'Area', value: 'Aberdeen, CA' },
-        { label: 'Status', value: 'Completed' },
-      ],
-      gallery: [
-        'assets/images/portfolio/aberdeen/g01.webp',
-        'assets/images/portfolio/aberdeen/g02.webp',
-        'assets/images/portfolio/aberdeen/g03.webp',
-        'assets/images/portfolio/aberdeen/g04.webp',
-      ],
-    },
     '100-unit-co-living': {
       tag: 'NCA Designs 2024',
       title: '100 Unit Co-Living',
@@ -2089,10 +2075,12 @@ if (eventCalendarGrid && eventCalendarTitle && eventMonthStrip) {
     }
   ];
 
-  const calendarYear = 2026;
+  const today = new Date();
+  const calendarYear = today.getFullYear();
   const weekdayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const monthFormatter = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' });
-  const today = new Date();
+  // label each cell by its own date: leading/trailing cells belong to the neighbouring month
+  const dayLabelFormatter = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   const initialMonthIndex = today.getFullYear() === calendarYear ? today.getMonth() : 0;
   let viewingDate = new Date(calendarYear, initialMonthIndex, 1);
 
@@ -2215,7 +2203,7 @@ if (eventCalendarGrid && eventCalendarTitle && eventMonthStrip) {
       ].filter(Boolean).join(' ');
       const firstEventId = items[0]?.id || '';
       const dayAttributes = items.length
-        ? `data-event-id="${firstEventId}" role="button" tabindex="0" aria-label="Open event details for ${cellDate.getDate()} ${monthFormatter.format(firstDay)}"`
+        ? `data-event-id="${firstEventId}" role="button" tabindex="0" aria-label="Open event details for ${dayLabelFormatter.format(cellDate)}"`
         : '';
 
       const chipsMarkup = items.map((entry) => `
@@ -2238,6 +2226,7 @@ if (eventCalendarGrid && eventCalendarTitle && eventMonthStrip) {
     syncCalendarControls();
   };
 
+  eventMonthStrip.setAttribute('aria-label', `Browse months of ${calendarYear}`);
   eventMonthStrip.innerHTML = Array.from({ length: 12 }, (_, monthIndex) => {
     const label = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(calendarYear, monthIndex, 1));
     return `<button class="event-month-pill" type="button" data-month-index="${monthIndex}" aria-pressed="false">${label}</button>`;
@@ -2489,6 +2478,9 @@ if (svcModal) {
   if (!imgs.length) return;
   var lb = document.createElement('div');
   lb.className = 'pglb'; lb.hidden = true;
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.setAttribute('aria-label', 'Project image viewer');
   lb.innerHTML = '<button class="pglb-x" aria-label="Close">&times;</button>' +
     '<button class="pglb-nav pglb-prev" aria-label="Previous">&#8249;</button>' +
     '<img class="pglb-img" src="" alt="" />' +
@@ -2497,11 +2489,27 @@ if (svcModal) {
   document.body.appendChild(lb);
   var lbImg = lb.querySelector('.pglb-img');
   var lbCount = lb.querySelector('.pglb-count');
-  var idx = 0;
-  function show(i){ idx = (i + imgs.length) % imgs.length; lbImg.src = imgs[idx].src; lbImg.alt = imgs[idx].alt || ''; lbCount.textContent = (idx + 1) + ' / ' + imgs.length; }
-  function open(i){ show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; }
-  function close(){ lb.hidden = true; document.body.style.overflow = ''; }
-  imgs.forEach(function(im, i){ im.addEventListener('click', function(){ open(i); }); });
+  var lbClose = lb.querySelector('.pglb-x');
+  var lbButtons = Array.prototype.slice.call(lb.querySelectorAll('button'));
+  var idx = 0, lastFocus = null;
+  function show(i){ idx = (i + imgs.length) % imgs.length; lbImg.src = imgs[idx].dataset.full || imgs[idx].currentSrc || imgs[idx].src; lbImg.alt = imgs[idx].alt || ''; lbCount.textContent = (idx + 1) + ' / ' + imgs.length; }
+  function open(i){ lastFocus = document.activeElement; show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; lbClose.focus(); }
+  function close(){ lb.hidden = true; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  // images open with Enter/Space as well as click
+  imgs.forEach(function(im, i){
+    im.setAttribute('tabindex', '0');
+    im.setAttribute('role', 'button');
+    im.setAttribute('aria-label', 'Open image ' + (i + 1) + ' of ' + imgs.length + (im.alt ? ': ' + im.alt : ''));
+    im.addEventListener('click', function(){ open(i); });
+    im.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } });
+  });
+  // keep Tab inside the viewer while it is open
+  lb.addEventListener('keydown', function(e){
+    if (e.key !== 'Tab') return;
+    var first = lbButtons[0], last = lbButtons[lbButtons.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   lb.querySelector('.pglb-prev').addEventListener('click', function(e){ e.stopPropagation(); show(idx - 1); });
   lb.querySelector('.pglb-next').addEventListener('click', function(e){ e.stopPropagation(); show(idx + 1); });
   lb.querySelector('.pglb-x').addEventListener('click', close);
