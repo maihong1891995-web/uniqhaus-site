@@ -4,7 +4,12 @@
 
 'use strict';
 
-const analyticsPage = document.body?.dataset.page || 'unknown';
+// data-page="reviews" is the Blog section key (nav + CSS); report blog pages to analytics by their real type
+const analyticsPage = (() => {
+  const page = document.body?.dataset.page || 'unknown';
+  if (page !== 'reviews') return page;
+  return /\/blog-[^/]+$/.test(window.location.pathname) ? 'blog-post' : 'blog';
+})();
 const trackedScrollMilestones = new Set();
 
 /* ─── FORM ENDPOINT CONFIG (Web3Forms) ──────────────────────────────────────
@@ -88,6 +93,17 @@ document.addEventListener('click', (event) => {
       placement,
       destination: href,
     });
+    if (typeof window.fbq === 'function') window.fbq('track', 'Contact', { content_name: 'phone', placement });
+    return;
+  }
+
+  if (/^https:\/\/m\.me\//.test(href)) {
+    trackEvent('click_messenger', {
+      click_text: clickText,
+      placement,
+      destination: href,
+    });
+    if (typeof window.fbq === 'function') window.fbq('track', 'Contact', { content_name: 'messenger', placement });
     return;
   }
 
@@ -1558,25 +1574,6 @@ if (projectModal) {
         'assets/images/portfolio/belblossom/IMG_6646.jpg',
       ],
     },
-    aberdeen: {
-      tag: 'Bathroom Remodeling 2024',
-      title: 'The Aberdeen Project',
-      location: 'Aberdeen, CA',
-      summary: 'Bathroom and kitchen remodel that refreshed major living spaces with modern finishes.',
-      cover: 'assets/images/portfolio/aberdeen/cover.webp',
-      meta: [
-        { label: 'Scope', value: 'Bathroom and kitchen remodel' },
-        { label: 'Type', value: 'Bathroom Remodeling' },
-        { label: 'Area', value: 'Aberdeen, CA' },
-        { label: 'Status', value: 'Completed' },
-      ],
-      gallery: [
-        'assets/images/portfolio/aberdeen/g01.webp',
-        'assets/images/portfolio/aberdeen/g02.webp',
-        'assets/images/portfolio/aberdeen/g03.webp',
-        'assets/images/portfolio/aberdeen/g04.webp',
-      ],
-    },
     '100-unit-co-living': {
       tag: 'NCA Designs 2024',
       title: '100 Unit Co-Living',
@@ -2089,10 +2086,12 @@ if (eventCalendarGrid && eventCalendarTitle && eventMonthStrip) {
     }
   ];
 
-  const calendarYear = 2026;
+  const today = new Date();
+  const calendarYear = today.getFullYear();
   const weekdayLabels = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
   const monthFormatter = new Intl.DateTimeFormat('en-US', { month: 'long', year: 'numeric' });
-  const today = new Date();
+  // label each cell by its own date: leading/trailing cells belong to the neighbouring month
+  const dayLabelFormatter = new Intl.DateTimeFormat('en-US', { month: 'long', day: 'numeric', year: 'numeric' });
   const initialMonthIndex = today.getFullYear() === calendarYear ? today.getMonth() : 0;
   let viewingDate = new Date(calendarYear, initialMonthIndex, 1);
 
@@ -2215,7 +2214,7 @@ if (eventCalendarGrid && eventCalendarTitle && eventMonthStrip) {
       ].filter(Boolean).join(' ');
       const firstEventId = items[0]?.id || '';
       const dayAttributes = items.length
-        ? `data-event-id="${firstEventId}" role="button" tabindex="0" aria-label="Open event details for ${cellDate.getDate()} ${monthFormatter.format(firstDay)}"`
+        ? `data-event-id="${firstEventId}" role="button" tabindex="0" aria-label="Open event details for ${dayLabelFormatter.format(cellDate)}"`
         : '';
 
       const chipsMarkup = items.map((entry) => `
@@ -2238,6 +2237,7 @@ if (eventCalendarGrid && eventCalendarTitle && eventMonthStrip) {
     syncCalendarControls();
   };
 
+  eventMonthStrip.setAttribute('aria-label', `Browse months of ${calendarYear}`);
   eventMonthStrip.innerHTML = Array.from({ length: 12 }, (_, monthIndex) => {
     const label = new Intl.DateTimeFormat('en-US', { month: 'short' }).format(new Date(calendarYear, monthIndex, 1));
     return `<button class="event-month-pill" type="button" data-month-index="${monthIndex}" aria-pressed="false">${label}</button>`;
@@ -2322,6 +2322,23 @@ if (eventCalendarGrid && eventCalendarTitle && eventMonthStrip) {
   window.addEventListener('scroll', toggle, { passive: true });
   btn.addEventListener('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }));
   toggle();
+})();
+
+/* ─── Floating contact dock: Messenger + Call (shown on every page) ─────────
+   Sits above the GoHighLevel chat bubble. Call = GHL tracking line (IVR).     */
+(function () {
+  if (document.getElementById('contactDock')) return;
+  const dock = document.createElement('div');
+  dock.id = 'contactDock';
+  dock.className = 'contact-dock';
+  dock.innerHTML =
+    '<a class="contact-dock-btn contact-dock-messenger" href="https://m.me/uniqhaus" target="_blank" rel="noopener" aria-label="Chat with UniqHaus on Messenger" data-label="Chat on Messenger">' +
+      '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.15.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.87c.17-.08.36-.09.53-.04.91.25 1.88.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46l-2.94 4.66a1.5 1.5 0 0 1-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66a1.5 1.5 0 0 1 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.18.69.63z"/></svg>' +
+    '</a>' +
+    '<a class="contact-dock-btn contact-dock-call" href="tel:+16506662068" aria-label="Call UniqHaus at 650-666-2068" data-label="Call 650-666-2068">' +
+      '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>' +
+    '</a>';
+  document.body.appendChild(dock);
 })();
 
 // ─── SERVICE DETAIL MODAL (Services page) ──────────────────────────────────
@@ -2489,6 +2506,9 @@ if (svcModal) {
   if (!imgs.length) return;
   var lb = document.createElement('div');
   lb.className = 'pglb'; lb.hidden = true;
+  lb.setAttribute('role', 'dialog');
+  lb.setAttribute('aria-modal', 'true');
+  lb.setAttribute('aria-label', 'Project image viewer');
   lb.innerHTML = '<button class="pglb-x" aria-label="Close">&times;</button>' +
     '<button class="pglb-nav pglb-prev" aria-label="Previous">&#8249;</button>' +
     '<img class="pglb-img" src="" alt="" />' +
@@ -2497,11 +2517,27 @@ if (svcModal) {
   document.body.appendChild(lb);
   var lbImg = lb.querySelector('.pglb-img');
   var lbCount = lb.querySelector('.pglb-count');
-  var idx = 0;
-  function show(i){ idx = (i + imgs.length) % imgs.length; lbImg.src = imgs[idx].src; lbImg.alt = imgs[idx].alt || ''; lbCount.textContent = (idx + 1) + ' / ' + imgs.length; }
-  function open(i){ show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; }
-  function close(){ lb.hidden = true; document.body.style.overflow = ''; }
-  imgs.forEach(function(im, i){ im.addEventListener('click', function(){ open(i); }); });
+  var lbClose = lb.querySelector('.pglb-x');
+  var lbButtons = Array.prototype.slice.call(lb.querySelectorAll('button'));
+  var idx = 0, lastFocus = null;
+  function show(i){ idx = (i + imgs.length) % imgs.length; lbImg.src = imgs[idx].dataset.full || imgs[idx].currentSrc || imgs[idx].src; lbImg.alt = imgs[idx].alt || ''; lbCount.textContent = (idx + 1) + ' / ' + imgs.length; }
+  function open(i){ lastFocus = document.activeElement; show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; lbClose.focus(); }
+  function close(){ lb.hidden = true; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
+  // images open with Enter/Space as well as click
+  imgs.forEach(function(im, i){
+    im.setAttribute('tabindex', '0');
+    im.setAttribute('role', 'button');
+    im.setAttribute('aria-label', 'Open image ' + (i + 1) + ' of ' + imgs.length + (im.alt ? ': ' + im.alt : ''));
+    im.addEventListener('click', function(){ open(i); });
+    im.addEventListener('keydown', function(e){ if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); open(i); } });
+  });
+  // keep Tab inside the viewer while it is open
+  lb.addEventListener('keydown', function(e){
+    if (e.key !== 'Tab') return;
+    var first = lbButtons[0], last = lbButtons[lbButtons.length - 1];
+    if (e.shiftKey && document.activeElement === first) { e.preventDefault(); last.focus(); }
+    else if (!e.shiftKey && document.activeElement === last) { e.preventDefault(); first.focus(); }
+  });
   lb.querySelector('.pglb-prev').addEventListener('click', function(e){ e.stopPropagation(); show(idx - 1); });
   lb.querySelector('.pglb-next').addEventListener('click', function(e){ e.stopPropagation(); show(idx + 1); });
   lb.querySelector('.pglb-x').addEventListener('click', close);
