@@ -93,6 +93,17 @@ document.addEventListener('click', (event) => {
       placement,
       destination: href,
     });
+    if (typeof window.fbq === 'function') window.fbq('track', 'Contact', { content_name: 'phone', placement });
+    return;
+  }
+
+  if (/^https:\/\/m\.me\//.test(href)) {
+    trackEvent('click_messenger', {
+      click_text: clickText,
+      placement,
+      destination: href,
+    });
+    if (typeof window.fbq === 'function') window.fbq('track', 'Contact', { content_name: 'messenger', placement });
     return;
   }
 
@@ -2313,6 +2324,23 @@ if (eventCalendarGrid && eventCalendarTitle && eventMonthStrip) {
   toggle();
 })();
 
+/* ─── Floating contact dock: Messenger + Call (shown on every page) ─────────
+   Sits above the GoHighLevel chat bubble. Call = GHL tracking line (IVR).     */
+(function () {
+  if (document.getElementById('contactDock')) return;
+  const dock = document.createElement('div');
+  dock.id = 'contactDock';
+  dock.className = 'contact-dock';
+  dock.innerHTML =
+    '<a class="contact-dock-btn contact-dock-messenger" href="https://m.me/uniqhaus" target="_blank" rel="noopener" aria-label="Chat with UniqHaus on Messenger" data-label="Chat on Messenger">' +
+      '<svg viewBox="0 0 24 24" width="26" height="26" aria-hidden="true"><path fill="currentColor" d="M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17.16.15.26.35.27.57l.05 1.78c.02.57.6.94 1.12.71l1.98-.87c.17-.08.36-.09.53-.04.91.25 1.88.38 2.91.38 5.64 0 10-4.13 10-9.7S17.64 2 12 2zm6 7.46l-2.94 4.66a1.5 1.5 0 0 1-2.17.4l-2.34-1.75a.6.6 0 0 0-.72 0l-3.16 2.4c-.42.32-.97-.18-.69-.63l2.94-4.66a1.5 1.5 0 0 1 2.17-.4l2.34 1.75a.6.6 0 0 0 .72 0l3.16-2.4c.42-.32.97.18.69.63z"/></svg>' +
+    '</a>' +
+    '<a class="contact-dock-btn contact-dock-call" href="tel:+16506662068" aria-label="Call UniqHaus at 650-666-2068" data-label="Call 650-666-2068">' +
+      '<svg viewBox="0 0 24 24" width="24" height="24" aria-hidden="true"><path fill="currentColor" d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1C10.61 21 3 13.39 3 4c0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>' +
+    '</a>';
+  document.body.appendChild(dock);
+})();
+
 // ─── SERVICE DETAIL MODAL (Services page) ──────────────────────────────────
 const svcModal = document.getElementById('svcModal');
 if (svcModal) {
@@ -2492,7 +2520,7 @@ if (svcModal) {
   var lbClose = lb.querySelector('.pglb-x');
   var lbButtons = Array.prototype.slice.call(lb.querySelectorAll('button'));
   var idx = 0, lastFocus = null;
-  function show(i){ idx = (i + imgs.length) % imgs.length; lbImg.src = imgs[idx].src; lbImg.alt = imgs[idx].alt || ''; lbCount.textContent = (idx + 1) + ' / ' + imgs.length; }
+  function show(i){ idx = (i + imgs.length) % imgs.length; lbImg.src = imgs[idx].dataset.full || imgs[idx].currentSrc || imgs[idx].src; lbImg.alt = imgs[idx].alt || ''; lbCount.textContent = (idx + 1) + ' / ' + imgs.length; }
   function open(i){ lastFocus = document.activeElement; show(i); lb.hidden = false; document.body.style.overflow = 'hidden'; lbClose.focus(); }
   function close(){ lb.hidden = true; document.body.style.overflow = ''; if (lastFocus && lastFocus.focus) lastFocus.focus(); }
   // images open with Enter/Space as well as click

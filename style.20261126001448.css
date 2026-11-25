@@ -4268,6 +4268,57 @@ a.blog-card { text-decoration: none; color: inherit; cursor: pointer; }
   .scroll-top-btn { bottom: 5.2rem; right: 1rem; width: 42px; height: 42px; }
 }
 
+/* Floating contact dock: Messenger + Call (injected by script.js, sits above the GHL chat bubble) */
+.contact-dock {
+  position: fixed;
+  right: 22px;
+  bottom: 190px;
+  z-index: 990; /* below #navbar (1000) so the mobile menu covers it */
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.contact-dock-btn {
+  position: relative;
+  width: 54px;
+  height: 54px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 22px rgba(0,0,0,0.24);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+.contact-dock-btn:hover { transform: translateY(-2px) scale(1.05); box-shadow: 0 12px 28px rgba(0,0,0,0.3); }
+.contact-dock-btn:focus-visible { outline: 3px solid var(--gold-dark); outline-offset: 3px; }
+.contact-dock-messenger { background: linear-gradient(135deg, #0866ff 0%, #a033ff 70%, #ff5280 100%); color: #fff; }
+.contact-dock-call { background: var(--gold); color: var(--dark); }
+.contact-dock-btn::before {
+  content: attr(data-label);
+  position: absolute;
+  right: calc(100% + 12px);
+  top: 50%;
+  transform: translate(6px, -50%);
+  white-space: nowrap;
+  background: var(--dark);
+  color: #fff;
+  font-family: var(--font-sans);
+  font-size: 0.78rem;
+  font-weight: 600;
+  padding: 0.45rem 0.75rem;
+  border-radius: 6px;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.contact-dock-btn:hover::before, .contact-dock-btn:focus-visible::before { opacity: 1; transform: translate(0, -50%); }
+@media (max-width: 768px) {
+  .contact-dock { right: 14px; bottom: 170px; gap: 10px; }
+  .contact-dock-btn { width: 48px; height: 48px; }
+  .contact-dock-btn::before { display: none; }
+}
+@media print { .contact-dock { display: none; } }
+
 /* Right-side nav group: phone number left of the CTA button */
 .nav-actions {
   display: flex;
@@ -4780,6 +4831,11 @@ picture { display: contents; }
 
 .article-byline{font-family:'Montserrat',sans-serif;font-size:.8rem;line-height:1.5;color:#6f6a5f;margin:0 0 1.4rem;letter-spacing:.01em;}
 .article-byline strong{color:#3a4453;font-weight:600;}
+/* "Summarize with AI" link row on blog posts */
+.ai-summarize{display:flex;flex-wrap:wrap;align-items:center;gap:.5rem;margin:-.6rem 0 1.4rem;font-family:'Montserrat',sans-serif;font-size:.75rem;}
+.ai-summarize-label{color:#6f6a5f;font-weight:600;letter-spacing:.04em;margin-right:.2rem;}
+.ai-summarize a{display:inline-block;padding:.35rem .8rem;border:1px solid rgba(31,42,58,.25);border-radius:999px;color:var(--dark);font-weight:600;text-decoration:none;transition:border-color .2s ease,color .2s ease;}
+.ai-summarize a:hover,.ai-summarize a:focus-visible{border-color:var(--gold-dark);color:var(--gold-dark);}
 
 
 /* BuildZoom contractor badge (footer, cream bg) - sized to match the 36px social icons */
@@ -4800,6 +4856,8 @@ picture { display: contents; }
 
 /* Client reviews / testimonials (BOFU social proof) */
 .reviews-section{background:var(--cream);padding:clamp(3.5rem,6vw,5.5rem) 2rem;border-top:1px solid var(--border-dark);}
+.reviews-section .btn-outline{border-color:rgba(31,42,58,0.35);color:var(--dark);}
+.reviews-section .btn-outline:hover{border-color:var(--gold-dark);color:var(--gold-dark);}
 .reviews-head{text-align:center;max-width:640px;margin:0 auto 2.5rem;}
 .reviews-head h2{font-family:'Cormorant Garamond',serif;font-size:clamp(1.9rem,3.2vw,2.6rem);font-weight:600;margin:0.3rem 0 0.6rem;color:#1f2a3a;}
 .reviews-stars-lg{color:#e2b95f;font-size:1.1rem;letter-spacing:2px;margin:0;}
